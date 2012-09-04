@@ -1,1 +1,7 @@
-﻿Dokumentaatio tänne
+﻿Aihe: Tetris
+
+Toteutetaan yksinkertainen Tetris-peli, jossa pelaaja yrittää ohjata nuolinäppäimillä yksi kerrallaan putoavia palikoita mahdollisimman tiiviseen kasaan. Kun ruudukon yksi rivi on täynnä, sen sisältö häviää ja pelaaja saa pisteitä. Peli päättyy, kun pino on muodostunut niin korkeaksi, että uusi palikka ei mahdu kokonaan ruudukkoon.
+
+Käyttäjä: Pelaaja
+
+Pelaaja ohjaa ja kääntelee putoavia palikoita nuolinäppäimillä.

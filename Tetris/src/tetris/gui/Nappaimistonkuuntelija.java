@@ -3,6 +3,7 @@ package tetris.gui;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import tetris.logiikka.PalikanVaihtaja;
 import tetris.logiikka.Palikka;
 
 public class Nappaimistonkuuntelija implements KeyListener {
@@ -20,7 +21,6 @@ public class Nappaimistonkuuntelija implements KeyListener {
 
     @Override
     public void keyTyped(KeyEvent e) {
-        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
@@ -37,7 +37,9 @@ public class Nappaimistonkuuntelija implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-        throw new UnsupportedOperationException("Not supported yet.");
     }
-    
+//
+//    public void setVaihtaja(PalikanVaihtaja vaihtaja) {
+//        this.vaihtaja = vaihtaja;
+//    }
 }

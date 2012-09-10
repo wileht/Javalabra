@@ -10,7 +10,6 @@ public class Pala {
     private Tetris tetris;
 
     public Pala() {
-        Random random = new Random();
         this.x = 175;
         this.y = -12;
     }

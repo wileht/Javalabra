@@ -7,6 +7,7 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 import tetris.Tetris;
+import tetris.logiikka.PalikanVaihtaja;
 
 public class Kayttoliittyma implements Runnable {
     
@@ -39,7 +40,13 @@ public class Kayttoliittyma implements Runnable {
         this.alusta = new Piirtoalusta(tetris);
         container.add(alusta);
         this.kuuntelija = new Nappaimistonkuuntelija(alusta);
+        kuuntelija.setPalikka(tetris.getPalikka());
         frame.addKeyListener(kuuntelija);
+    }
+    
+    public void asetaPalikanVaihtaja() {
+        PalikanVaihtaja vaihtaja = new PalikanVaihtaja(tetris, kuuntelija);
+        tetris.getPalikka().setVaihtaja(vaihtaja);
     }
 
     public Piirtoalusta getAlusta() {

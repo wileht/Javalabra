@@ -10,10 +10,6 @@ public class Main {
 
     public static void main(String[] args) {
         Tetris tetris = new Tetris(25);
-        Palikka palikka = new Palikka();
-        Pala pala = new Pala();
-        palikka.lisaaPala(pala);
-        tetris.lisaaPala(pala);
         
         Kayttoliittyma liittyma = new Kayttoliittyma(tetris);
         SwingUtilities.invokeLater(liittyma);
@@ -25,7 +21,7 @@ public class Main {
                 System.out.println("Piirtoalustaa ei ole vielä luotu.");
             }
         }
-        liittyma.getKuuntelija().setPalikka(palikka);
+        liittyma.asetaPalikanVaihtaja();
         
         tetris.setAlusta(liittyma.getAlusta());
         tetris.start();

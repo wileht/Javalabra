@@ -36,7 +36,7 @@ public class Nappaimistonkuuntelija implements KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
     }
-    
+
     public Palikka getPalikka() {
         return palikka;
     }

@@ -25,7 +25,6 @@ public class Main {
         tetris.getPalikka().setLiikuttaja(liikuttaja);
 
         PalikanVaihtaja vaihtaja = new PalikanVaihtaja(tetris, liittyma.getKuuntelija(), liikuttaja);
-//        tetris.getPalikka().setVaihtaja(vaihtaja);
         liikuttaja.setVaihtaja(vaihtaja);
 
         tetris.setAlusta(liittyma.getAlusta());

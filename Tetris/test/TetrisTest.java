@@ -1,18 +1,16 @@
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.junit.After;
-import org.junit.AfterClass;
-import static org.junit.Assert.*;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import org.junit.*;
 import tetris.Tetris;
+import tetris.logiikka.Liikuttaja;
 
 public class TetrisTest {
-    
+
     private Tetris tetris;
-    
+
     public TetrisTest() {
     }
 
@@ -23,27 +21,29 @@ public class TetrisTest {
     @AfterClass
     public static void tearDownClass() throws Exception {
     }
-    
+
     @Before
     public void setUp() {
         this.tetris = new Tetris();
+        Liikuttaja liikuttaja = new Liikuttaja(tetris);
+        tetris.getPalikka().setLiikuttaja(liikuttaja);
     }
-    
+
     @After
     public void tearDown() {
     }
-    
+
     @Test
     public void ensimmainenPalikkaLuodaan() {
         assertNotNull(tetris.getPalikka());
     }
-    
+
     @Test
     public void ensimmainenPalikkaLuodaanOikeaanPaikkaan() {
         assertEquals(tetris.getPalikka().getPalat().get(0).getX(), 175, 0.01);
         assertEquals(tetris.getPalikka().getPalat().get(0).getY(), -12, 0.01);
     }
-    
+
     @Test
     public void palikkaTippuuOikeanVerran() {
         tetris.start();

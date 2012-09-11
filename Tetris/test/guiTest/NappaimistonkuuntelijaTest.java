@@ -36,5 +36,5 @@ public class NappaimistonkuuntelijaTest {
     }
 //    @Test
 //    public void PalikkaLiikkuuVasemmalle() {
-//    }
+//    } jne jne
 }

@@ -1,7 +1,7 @@
 package logiikkaTest;
 
-import org.junit.*;
 import static org.junit.Assert.assertEquals;
+import org.junit.*;
 import tetris.logiikka.Pala;
 
 public class PalaTest {
@@ -30,26 +30,9 @@ public class PalaTest {
     }
 
     @Test
-    public void palaLiikkuu() {
+    public void palaLiikkuuOikeanVerran() {
         pala.liiku(5, 5);
         assertEquals(pala.getX(), 180, tarkkuus);
         assertEquals(pala.getY(), -7, tarkkuus);
-    }
-
-    @Test
-    public void palaTormaaSeinaan() {
-        pala.liiku(-175, 0);
-        pala.liiku(-5, 0);
-        assertEquals(pala.getX(), 0, tarkkuus);
-        pala.liiku(325, 0);
-        pala.liiku(5, 0);
-        assertEquals(pala.getX(), 325, tarkkuus);
-    }
-
-    @Test
-    public void palaTormaaLattiaan() {
-        pala.liiku(0, 662);
-        pala.liiku(0, 5);
-        assertEquals(pala.getY(), 650, tarkkuus);
     }
 }

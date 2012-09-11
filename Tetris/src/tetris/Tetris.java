@@ -16,7 +16,7 @@ public class Tetris extends Timer implements ActionListener {
     private Palikka palikka;
 
     public Tetris() {
-        super(750, null);
+        super(650, null);
 
         addActionListener(this);
         setInitialDelay(1000);

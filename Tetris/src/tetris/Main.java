@@ -2,6 +2,7 @@ package tetris;
 
 import javax.swing.SwingUtilities;
 import tetris.gui.Kayttoliittyma;
+import tetris.logiikka.Liikuttaja;
 import tetris.logiikka.PalikanVaihtaja;
 
 public class Main {
@@ -19,9 +20,13 @@ public class Main {
                 System.out.println("Piirtoalustaa ei ole vielä luotu.");
             }
         }
-//        liittyma.luoPalikanVaihtaja();
-        PalikanVaihtaja vaihtaja = new PalikanVaihtaja(tetris, liittyma.getKuuntelija());
-        tetris.getPalikka().setVaihtaja(vaihtaja);
+
+        Liikuttaja liikuttaja = new Liikuttaja(tetris);
+        tetris.getPalikka().setLiikuttaja(liikuttaja);
+
+        PalikanVaihtaja vaihtaja = new PalikanVaihtaja(tetris, liittyma.getKuuntelija(), liikuttaja);
+//        tetris.getPalikka().setVaihtaja(vaihtaja);
+        liikuttaja.setVaihtaja(vaihtaja);
 
         tetris.setAlusta(liittyma.getAlusta());
         tetris.start();

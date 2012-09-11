@@ -5,10 +5,12 @@ import java.util.ArrayList;
 public class Palikka {
 
     private ArrayList<Pala> palat;
-    private PalikanVaihtaja vaihtaja;
+//    private PalikanVaihtaja vaihtaja;
+    private Liikuttaja liikuttaja;
 
-    public Palikka(PalikanVaihtaja vaihtaja) {
-        this.vaihtaja = vaihtaja;
+    public Palikka(Liikuttaja liikuttaja) {
+        this.liikuttaja = liikuttaja;
+//        this.vaihtaja = vaihtaja;
         this.palat = new ArrayList<>();
     }
 
@@ -17,10 +19,7 @@ public class Palikka {
     }
 
     public void liiku(int dx, int dy) {
-        for (Pala pala : palat) {
-            pala.liiku(dx, dy);
-        }
-        vaihdetaankoPalikka();
+        liikuttaja.liikuta(this, dx, dy);
     }
 
     public void lisaaPala(Pala pala) {
@@ -31,12 +30,6 @@ public class Palikka {
         return palat;
     }
 
-    public void vaihdetaankoPalikka() {
-        if (osuukoLattiaan()) {
-            vaihdaPalikka();
-        }
-    }
-
     public boolean osuukoLattiaan() {
         for (Pala pala : palat) {
             if (pala.getY() >= 625) {
@@ -45,16 +38,20 @@ public class Palikka {
         }
         return false;
     }
+//
+//    public void vaihdaPalikka() {
+//        vaihtaja.vaihdaPalikka();
+//    }
+//
+//    public void setVaihtaja(PalikanVaihtaja vaihtaja) {
+//        this.vaihtaja = vaihtaja;
+//    }
 
-    public void vaihdaPalikka() {
-        vaihtaja.vaihdaPalikka();
+    public void setLiikuttaja(Liikuttaja liikuttaja) {
+        this.liikuttaja = liikuttaja;
     }
 
-    public void setVaihtaja(PalikanVaihtaja vaihtaja) {
-        this.vaihtaja = vaihtaja;
-    }
-
-    public PalikanVaihtaja getPalikanVaihtaja() {
-        return vaihtaja;
-    }
+//    public PalikanVaihtaja getPalikanVaihtaja() {
+//        return vaihtaja;
+//    }
 }

@@ -42,10 +42,6 @@ public class Kayttoliittyma implements Runnable {
         frame.addKeyListener(kuuntelija);
     }
 
-//    public void luoPalikanVaihtaja() {
-//        PalikanVaihtaja vaihtaja = new PalikanVaihtaja(tetris, kuuntelija);
-//        tetris.getPalikka().setVaihtaja(vaihtaja);
-//    }
     public Piirtoalusta getAlusta() {
         return alusta;
     }

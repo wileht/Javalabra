@@ -1,16 +1,13 @@
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import static org.junit.Assert.assertEquals;
-import org.junit.*;
-import tetris.Tetris;
-
 import org.junit.After;
 import org.junit.AfterClass;
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
+import tetris.Tetris;
 
 public class TetrisTest {
     

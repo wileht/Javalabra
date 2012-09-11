@@ -1,12 +1,9 @@
 package tetris.logiikka;
 
-import tetris.Tetris;
-
 public class Pala {
 
     private int x;
     private int y;
-    private Tetris tetris;
 
     public Pala() {
         this.x = 175;
@@ -21,13 +18,27 @@ public class Pala {
         return y;
     }
 
-//    huom! liiku() edelleen hyvin alkeellinen
     public void liiku(int dx, int dy) {
-        if (this.x + dx >= 0 && this.x + dx <= 325) {
             this.x += dx;
-        }
-        if (this.y + dy <= 650) {
             this.y += dy;
-        }
     }
+//
+//    public boolean tormaakoSeinaan(int dx, int dy) {
+//        if (this.x + dx >= 0 && this.x + dx <= 325) {
+//            return true;
+//        }
+//        return false;
+//    }
+//
+//    public boolean tormaakoLattiaan(int dx, int dy) {
+//        if (this.y + dy <= 650) {
+//            return true;
+//        }
+//        return false;
+//    }
+//
+//    public boolean tormaakoToiseenPalaan(int dx, int dy) {
+//        
+//        return false;
+//    }
 }

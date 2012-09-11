@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import javax.swing.Timer;
 import tetris.gui.Piirtoalusta;
 import tetris.logiikka.Pala;
-import tetris.logiikka.PalikanVaihtaja;
 import tetris.logiikka.Palikka;
 
 public class Tetris extends Timer implements ActionListener {
@@ -16,26 +15,29 @@ public class Tetris extends Timer implements ActionListener {
     private ArrayList<Pala> palat;
     private Palikka palikka;
 
-    public Tetris(int palanKoko) {
-        super(1000, null);
+    public Tetris() {
+        super(750, null);
 
         addActionListener(this);
         setInitialDelay(1000);
 
-        this.palanKoko = palanKoko;
-
+        this.palanKoko = 25;
         this.palat = new ArrayList<>();
-        
-        this.palikka = new Palikka();
-        Pala ekaPala = new Pala();
-        this.palat.add(ekaPala);
-        this.palikka.lisaaPala(ekaPala);
+
+        luoEnsimmainenPalikka();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         palikka.liiku(0, 25);
         alusta.paivita();
+    }
+
+    private void luoEnsimmainenPalikka() {
+        this.palikka = new Palikka();
+        Pala ekaPala = new Pala();
+        this.palat.add(ekaPala);
+        this.palikka.lisaaPala(ekaPala);
     }
 
     public void setAlusta(Piirtoalusta alusta) {

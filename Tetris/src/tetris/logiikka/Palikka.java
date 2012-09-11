@@ -1,10 +1,9 @@
-
 package tetris.logiikka;
 
 import java.util.ArrayList;
 
 public class Palikka {
-    
+
     private ArrayList<Pala> palat;
     private PalikanVaihtaja vaihtaja;
 
@@ -16,14 +15,14 @@ public class Palikka {
     public Palikka() {
         this.palat = new ArrayList<>();
     }
-    
+
     public void liiku(int dx, int dy) {
         for (Pala pala : palat) {
             pala.liiku(dx, dy);
         }
         vaihdetaankoPalikka();
     }
-    
+
     public void lisaaPala(Pala pala) {
         this.palat.add(pala);
     }
@@ -31,13 +30,13 @@ public class Palikka {
     public ArrayList<Pala> getPalat() {
         return palat;
     }
-    
-    private void vaihdetaankoPalikka() {
+
+    public void vaihdetaankoPalikka() {
         if (osuukoLattiaan()) {
             vaihdaPalikka();
         }
     }
-    
+
     public boolean osuukoLattiaan() {
         for (Pala pala : palat) {
             if (pala.getY() >= 625) {
@@ -47,11 +46,15 @@ public class Palikka {
         return false;
     }
 
-    private void vaihdaPalikka() {
+    public void vaihdaPalikka() {
         vaihtaja.vaihdaPalikka();
     }
 
     public void setVaihtaja(PalikanVaihtaja vaihtaja) {
         this.vaihtaja = vaihtaja;
+    }
+
+    public PalikanVaihtaja getPalikanVaihtaja() {
+        return vaihtaja;
     }
 }

@@ -18,7 +18,7 @@ public class Piirtoalusta extends JPanel {
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
         graphics.setColor(Color.RED);
-        
+
         for (Pala pala : tetris.getPalat()) {
             graphics.fill3DRect(pala.getX(), pala.getY(), tetris.getPalanKoko(), tetris.getPalanKoko(), true);
         }

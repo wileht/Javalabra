@@ -1,13 +1,11 @@
-
 package tetris.gui;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import tetris.logiikka.PalikanVaihtaja;
 import tetris.logiikka.Palikka;
 
 public class Nappaimistonkuuntelija implements KeyListener {
-    
+
     private Palikka palikka;
     private Piirtoalusta alusta;
 
@@ -29,7 +27,7 @@ public class Nappaimistonkuuntelija implements KeyListener {
             palikka.liiku(-25, 0);
         } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
             palikka.liiku(25, 0);
-        } else if(e.getKeyCode() == KeyEvent.VK_DOWN) {
+        } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
             palikka.liiku(0, 25);
         }
         alusta.paivita();
@@ -38,8 +36,4 @@ public class Nappaimistonkuuntelija implements KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
     }
-//
-//    public void setVaihtaja(PalikanVaihtaja vaihtaja) {
-//        this.vaihtaja = vaihtaja;
-//    }
 }

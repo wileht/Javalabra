@@ -1,6 +1,5 @@
 package tetris.logiikka;
 
-import java.util.Random;
 import tetris.Tetris;
 
 public class Pala {
@@ -22,6 +21,7 @@ public class Pala {
         return y;
     }
 
+//    huom! liiku() edelleen hyvin alkeellinen
     public void liiku(int dx, int dy) {
         if (this.x + dx >= 0 && this.x + dx <= 325) {
             this.x += dx;

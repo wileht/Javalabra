@@ -1,4 +1,3 @@
-
 package tetris.gui;
 
 import java.awt.BorderLayout;
@@ -7,10 +6,9 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 import tetris.Tetris;
-import tetris.logiikka.PalikanVaihtaja;
 
 public class Kayttoliittyma implements Runnable {
-    
+
     private JFrame frame;
     private Tetris tetris;
     private Piirtoalusta alusta;
@@ -19,7 +17,7 @@ public class Kayttoliittyma implements Runnable {
     public Kayttoliittyma(Tetris tetris) {
         this.tetris = tetris;
     }
-    
+
     @Override
     public void run() {
         frame = new JFrame("Tetris");
@@ -34,8 +32,8 @@ public class Kayttoliittyma implements Runnable {
         frame.pack();
         frame.setVisible(true);
     }
-    
-    private void luoKomponentit(Container container) {        
+
+    private void luoKomponentit(Container container) {
         container.setLayout(new BorderLayout());
         this.alusta = new Piirtoalusta(tetris);
         container.add(alusta);
@@ -43,12 +41,11 @@ public class Kayttoliittyma implements Runnable {
         kuuntelija.setPalikka(tetris.getPalikka());
         frame.addKeyListener(kuuntelija);
     }
-    
-    public void asetaPalikanVaihtaja() {
-        PalikanVaihtaja vaihtaja = new PalikanVaihtaja(tetris, kuuntelija);
-        tetris.getPalikka().setVaihtaja(vaihtaja);
-    }
 
+//    public void luoPalikanVaihtaja() {
+//        PalikanVaihtaja vaihtaja = new PalikanVaihtaja(tetris, kuuntelija);
+//        tetris.getPalikka().setVaihtaja(vaihtaja);
+//    }
     public Piirtoalusta getAlusta() {
         return alusta;
     }

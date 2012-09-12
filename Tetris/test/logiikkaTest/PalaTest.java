@@ -29,6 +29,8 @@ public class PalaTest {
     public void tearDown() {
     }
 
+    // Luokka Pala on niin yksinkertainen, että Pala voi siis liikkua
+    // pelialueen ulkopuolellekin
     @Test
     public void palaLiikkuuOikeanVerran() {
         pala.liiku(5, 5);

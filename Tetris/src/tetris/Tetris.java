@@ -7,6 +7,7 @@ import javax.swing.Timer;
 import tetris.gui.Piirtoalusta;
 import tetris.logiikka.Pala;
 import tetris.logiikka.Palikka;
+import tetris.logiikka.RivinTyhjentaja;
 
 public class Tetris extends Timer implements ActionListener {
 
@@ -14,6 +15,7 @@ public class Tetris extends Timer implements ActionListener {
     private int palanKoko;
     private ArrayList<Pala> palat;
     private Palikka palikka;
+    private RivinTyhjentaja tyhjentaja;
 
     public Tetris() {
         super(650, null);
@@ -62,8 +64,25 @@ public class Tetris extends Timer implements ActionListener {
     public void lisaaPala(Pala pala) {
         this.palat.add(pala);
     }
+    
+    public void poistaPalat(ArrayList<Pala> poistettavat) {
+        for (Pala pala : poistettavat) {
+            this.palat.remove(pala);
+        }
+    }
 
     public ArrayList<Pala> getPalat() {
         return palat;
+    }
+
+    public void tiputaYlempiaRiveja(int i) {
+        for (Pala pala : palat) {
+            pala.liiku(0, 25);
+            tyhjentaja.tarkistaRivit();
+        }
+    }
+
+    public void setTyhjentaja(RivinTyhjentaja tyhjentaja) {
+        this.tyhjentaja = tyhjentaja;
     }
 }

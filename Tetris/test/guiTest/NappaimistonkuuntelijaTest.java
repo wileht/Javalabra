@@ -1,9 +1,6 @@
 package guiTest;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
+import org.junit.*;
 import tetris.Tetris;
 import tetris.gui.Nappaimistonkuuntelija;
 import tetris.gui.Piirtoalusta;
@@ -34,7 +31,9 @@ public class NappaimistonkuuntelijaTest {
     @After
     public void tearDown() {
     }
-//    @Test
-//    public void PalikkaLiikkuuVasemmalle() {
-//    } jne jne
+    
+    @Test
+    public void PalikkaLiikkuuVasemmalle() {
+        // KeyEventtien simulointia
+    } 
 }

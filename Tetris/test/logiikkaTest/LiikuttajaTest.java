@@ -5,10 +5,7 @@ import org.junit.*;
 import tetris.Tetris;
 import tetris.gui.Nappaimistonkuuntelija;
 import tetris.gui.Piirtoalusta;
-import tetris.logiikka.Liikuttaja;
-import tetris.logiikka.Pala;
-import tetris.logiikka.PalikanVaihtaja;
-import tetris.logiikka.Palikka;
+import tetris.logiikka.*;
 
 public class LiikuttajaTest {
 
@@ -37,6 +34,7 @@ public class LiikuttajaTest {
         PalikanVaihtaja vaihtaja = new PalikanVaihtaja(tetris, new Nappaimistonkuuntelija(
                 new Piirtoalusta(tetris)), liikuttaja);
         liikuttaja.setVaihtaja(vaihtaja);
+        liikuttaja.setTyhjentaja(new RivinTyhjentaja(tetris));
     }
 
     @After

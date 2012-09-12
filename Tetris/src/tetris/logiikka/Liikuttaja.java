@@ -6,6 +6,7 @@ public class Liikuttaja {
 
     private Tetris tetris;
     private PalikanVaihtaja vaihtaja;
+    private RivinTyhjentaja tyhjentaja;
 
     public Liikuttaja(Tetris tetris) {
         this.tetris = tetris;
@@ -83,5 +84,10 @@ public class Liikuttaja {
 
     public void vaihdaPalikka() {
         vaihtaja.vaihdaPalikka();
+        tyhjentaja.tarkistaRivit();
+    }
+
+    public void setTyhjentaja(RivinTyhjentaja tyhjentaja) {
+        this.tyhjentaja = tyhjentaja;
     }
 }

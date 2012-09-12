@@ -41,6 +41,7 @@ public class PalikkaTest {
     public void tearDown() {
     }
 
+    // Poikkeustapausten testaus LiikkujaTestissä
     @Test
     public void liikkuuOikeanVerran() {
         palikka.liiku(25, 25);

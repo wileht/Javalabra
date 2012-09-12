@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import org.junit.*;
 import tetris.Tetris;
+import tetris.gui.Piirtoalusta;
 import tetris.logiikka.Liikuttaja;
 
 public class TetrisTest {
@@ -27,6 +28,7 @@ public class TetrisTest {
         this.tetris = new Tetris();
         Liikuttaja liikuttaja = new Liikuttaja(tetris);
         tetris.getPalikka().setLiikuttaja(liikuttaja);
+        tetris.setAlusta(new Piirtoalusta(tetris));
     }
 
     @After
@@ -48,7 +50,7 @@ public class TetrisTest {
     public void palikkaTippuuOikeanVerran() {
         tetris.start();
         try {
-            Thread.sleep(2000);
+            Thread.sleep(1300); // Timerin delay 650 (ms)
         } catch (InterruptedException ex) {
             Logger.getLogger(TetrisTest.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -5,8 +5,12 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import org.junit.*;
 import tetris.Tetris;
+import tetris.gui.Nappaimistonkuuntelija;
 import tetris.gui.Piirtoalusta;
 import tetris.logiikka.Liikuttaja;
+import tetris.logiikka.PalikanVaihtaja;
+import tetris.logiikka.RivinTyhjentaja;
+import tetris.logiikka.Tormays;
 
 public class TetrisTest {
 
@@ -28,7 +32,13 @@ public class TetrisTest {
         this.tetris = new Tetris();
         Liikuttaja liikuttaja = new Liikuttaja(tetris);
         liikuttaja.setAlusta(new Piirtoalusta(tetris));
-        tetris.getPalikka().setLiikuttaja(liikuttaja);
+        liikuttaja.setTormays(new Tormays(tetris));
+        RivinTyhjentaja tyhjentaja = new RivinTyhjentaja(tetris, liikuttaja);
+        liikuttaja.setTyhjentaja(tyhjentaja);
+        PalikanVaihtaja vaihtaja = new PalikanVaihtaja(tetris, new Nappaimistonkuuntelija(),
+                 liikuttaja, tyhjentaja);
+        vaihtaja.vaihdaPalikka();
+        liikuttaja.setVaihtaja(vaihtaja);
     }
 
     @After

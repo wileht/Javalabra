@@ -8,6 +8,8 @@ public class Liikuttaja {
     private Tetris tetris;
     private PalikanVaihtaja vaihtaja;
     private Piirtoalusta alusta;
+    private RivinTyhjentaja tyhjentaja;
+    private Tormays tormays;
 
     public Liikuttaja(Tetris tetris) {
         this.tetris = tetris;
@@ -15,7 +17,9 @@ public class Liikuttaja {
 
     public void liikuta(Palikka palikka, int dx, int dy) {
         for (Pala pala : palikka.getPalat()) {
-            if (tormaakoSeinaan(pala, dx, dy) || tormaakoLattiaan(pala, dx, dy) || tormaakoToiseenPalaan(pala, dx, dy)) {
+            if (tormays.tormaakoPalaSeinaan(pala, pala.getX() + dx, pala.getX() + dx)
+                    || tormays.tormaakoPalaLattiaan(pala, pala.getY() + dy)
+                    || tormays.tormaakoPalaToiseenPalaan(pala, pala.getX() + dx, pala.getY() + dy)) {
                 return;
             }
         }
@@ -28,34 +32,8 @@ public class Liikuttaja {
         alusta.paivita();
     }
 
-    public boolean tormaakoSeinaan(Pala pala, int dx, int dy) {
-        if ((pala.getX() + dx) >= 0 && pala.getX() + dx <= 325) {
-            return false;
-        }
-        return true;
-    }
-
-    public boolean tormaakoLattiaan(Pala pala, int dx, int dy) {
-        if (pala.getY() + dy <= 650) {
-            return false;
-        }
-        return true;
-    }
-
-    public boolean tormaakoToiseenPalaan(Pala pala, int dx, int dy) {
-        for (Pala toinenPala : tetris.getPalat()) {
-            if (toinenPala != pala) {
-                if (toinenPala.getX() == pala.getX() + dx
-                        && toinenPala.getY() == pala.getY() + dy) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
     public void vaihdetaankoPalikka(Palikka palikka) {
-        if (osuukoLattiaan(palikka) || onkoAllaToinenPala(palikka)) {
+        if (tormays.osuukoPalikkaLattiaan(palikka) || tormays.onkoPalikanAllaToinenPala(palikka)) {
             vaihtaja.vaihdaPalikka();
         }
     }
@@ -64,27 +42,24 @@ public class Liikuttaja {
         this.vaihtaja = vaihtaja;
     }
 
-    public boolean osuukoLattiaan(Palikka palikka) {
-        for (Pala pala : palikka.getPalat()) {
-            if (pala.getY() >= 625) {
-                return true;
+    public void tiputaYlempiaRiveja(int i) {
+        for (Pala pala : tetris.getPalat()) {
+            if (pala.getY() <= i * 25 - 12) {
+                pala.liiku(0, 25);
             }
+            tyhjentaja.tarkistaRivit();
         }
-        return false;
     }
-
-    public boolean onkoAllaToinenPala(Palikka palikka) {
-        for (Pala toinenPala : tetris.getPalat()) {
-            for (Pala pala : palikka.getPalat()) {
-                if (toinenPala.getX() == pala.getX() && toinenPala.getY() == pala.getY() + 25) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
+    
     public void setAlusta(Piirtoalusta alusta) {
         this.alusta = alusta;
+    }
+
+    public void setTyhjentaja(RivinTyhjentaja tyhjentaja) {
+        this.tyhjentaja = tyhjentaja;
+    }
+
+    public void setTormays(Tormays tormays) {
+        this.tormays = tormays;
     }
 }

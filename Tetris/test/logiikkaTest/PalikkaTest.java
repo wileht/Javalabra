@@ -5,11 +5,7 @@ import org.junit.*;
 import tetris.Tetris;
 import tetris.gui.Nappaimistonkuuntelija;
 import tetris.gui.Piirtoalusta;
-import tetris.logiikka.Liikuttaja;
-import tetris.logiikka.Pala;
-import tetris.logiikka.PalikanVaihtaja;
-import tetris.logiikka.Palikka;
-import tetris.logiikka.RivinTyhjentaja;
+import tetris.logiikka.*;
 
 public class PalikkaTest {
 
@@ -32,11 +28,12 @@ public class PalikkaTest {
         Tetris tetris = new Tetris();
         Liikuttaja liikuttaja = new Liikuttaja(tetris);
         liikuttaja.setVaihtaja(new PalikanVaihtaja(tetris, new Nappaimistonkuuntelija(),
-                liikuttaja, new RivinTyhjentaja(tetris)));
+                liikuttaja, new RivinTyhjentaja(tetris, liikuttaja)));
         liikuttaja.setAlusta(new Piirtoalusta(tetris));
         this.palikka = new Palikka(liikuttaja);
         Pala pala = new Pala();
         palikka.lisaaPala(pala);
+        liikuttaja.setTormays(new Tormays(tetris));
     }
 
     @After

@@ -6,9 +6,11 @@ import tetris.Tetris;
 public class RivinTyhjentaja {
 
     private Tetris tetris;
+    private Liikuttaja liikuttaja;
 
-    public RivinTyhjentaja(Tetris tetris) {
+    public RivinTyhjentaja(Tetris tetris, Liikuttaja liikuttaja) {
         this.tetris = tetris;
+        this.liikuttaja = liikuttaja;
     }
 
     public void tarkistaRivit() {
@@ -39,6 +41,6 @@ public class RivinTyhjentaja {
     }
 
     public void tiputaYlempiaRiveja(int i) {
-        tetris.tiputaYlempiaRiveja(i);
+        liikuttaja.tiputaYlempiaRiveja(i);
     }
 }

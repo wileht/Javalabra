@@ -3,13 +3,17 @@ package logiikkaTest;
 import static org.junit.Assert.assertEquals;
 import org.junit.*;
 import tetris.Tetris;
+import tetris.gui.Piirtoalusta;
+import tetris.logiikka.Liikuttaja;
 import tetris.logiikka.Pala;
 import tetris.logiikka.RivinTyhjentaja;
+import tetris.logiikka.Tormays;
 
 public class RivinTyhjentajaTest {
 
     private RivinTyhjentaja tyhjentaja;
     private Tetris tetris;
+    private Liikuttaja liikuttaja;
     private double tarkkuus = 0.001;
 
     public RivinTyhjentajaTest() {
@@ -26,8 +30,12 @@ public class RivinTyhjentajaTest {
     @Before
     public void setUp() {
         this.tetris = new Tetris();
-        this.tyhjentaja = new RivinTyhjentaja(tetris);
-        tetris.setTyhjentaja(tyhjentaja);
+        this.liikuttaja = new Liikuttaja(tetris);
+        this.tyhjentaja = new RivinTyhjentaja(tetris, liikuttaja);
+        liikuttaja.setAlusta(new Piirtoalusta(tetris));
+        liikuttaja.setTormays(new Tormays(tetris));
+        liikuttaja.setTyhjentaja(tyhjentaja);
+        
         for (int i = 0; i < 14; i++) {
             Pala uusi = new Pala();
             uusi.liiku(-175, 25);
@@ -40,17 +48,16 @@ public class RivinTyhjentajaTest {
     public void tearDown() {
     }
 
-    //luokka Tetris luo konstruktorissaan yhden Palan
     @Test
     public void riviTyhjenee() {
         tyhjentaja.tyhjennaRivi(1);
-        assertEquals(tetris.getPalat().size(), 1, tarkkuus);
+        assertEquals(tetris.getPalat().size(), 0, tarkkuus);
     }
 
     @Test
     public void rivienTarkistusToimii() {
         tyhjentaja.tarkistaRivit();
-        assertEquals(tetris.getPalat().size(), 1, tarkkuus);
+        assertEquals(tetris.getPalat().size(), 0, tarkkuus);
     }
 
     @Test

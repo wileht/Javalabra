@@ -3,7 +3,6 @@ package guiTest;
 import org.junit.*;
 import tetris.Tetris;
 import tetris.gui.Nappaimistonkuuntelija;
-import tetris.gui.Piirtoalusta;
 
 public class NappaimistonkuuntelijaTest {
 

@@ -32,7 +32,7 @@ public class PalikanVaihtajaTest {
         this.tetris = new Tetris();
         this.kuuntelija = new Nappaimistonkuuntelija();
         this.liikuttaja = new Liikuttaja(tetris);
-        this.vaihtaja = new PalikanVaihtaja(tetris, kuuntelija, liikuttaja, new RivinTyhjentaja(tetris));
+        this.vaihtaja = new PalikanVaihtaja(tetris, kuuntelija, liikuttaja, new RivinTyhjentaja(tetris, liikuttaja));
     }
 
     @After

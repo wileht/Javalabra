@@ -31,10 +31,12 @@ public class LiikuttajaTest {
         this.liikuttaja = new Liikuttaja(tetris);
         this.palikka = new Palikka(liikuttaja);
         palikka.lisaaPala(new Pala());
+        tetris.setPalikka(palikka);
         PalikanVaihtaja vaihtaja = new PalikanVaihtaja(tetris, new Nappaimistonkuuntelija(),
-                liikuttaja, new RivinTyhjentaja(tetris));
+                liikuttaja, new RivinTyhjentaja(tetris, liikuttaja));
         liikuttaja.setVaihtaja(vaihtaja);
         liikuttaja.setAlusta(new Piirtoalusta(tetris));
+        liikuttaja.setTormays(new Tormays(tetris));
     }
 
     @After

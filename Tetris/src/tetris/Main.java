@@ -23,16 +23,15 @@ public class Main {
         }
 
         Liikuttaja liikuttaja = new Liikuttaja(tetris);
+        liikuttaja.setAlusta(liittyma.getAlusta());
         tetris.getPalikka().setLiikuttaja(liikuttaja);
         
         RivinTyhjentaja tyhjentaja = new RivinTyhjentaja(tetris);
-        liikuttaja.setTyhjentaja(tyhjentaja);
         tetris.setTyhjentaja(tyhjentaja);
 
-        PalikanVaihtaja vaihtaja = new PalikanVaihtaja(tetris, liittyma.getKuuntelija(), liikuttaja);
+        PalikanVaihtaja vaihtaja = new PalikanVaihtaja(tetris, liittyma.getKuuntelija(), liikuttaja, tyhjentaja);
         liikuttaja.setVaihtaja(vaihtaja);
 
-        tetris.setAlusta(liittyma.getAlusta());
         tetris.start();
     }
 }

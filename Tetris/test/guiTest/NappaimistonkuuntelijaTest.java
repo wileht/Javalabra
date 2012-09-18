@@ -25,7 +25,7 @@ public class NappaimistonkuuntelijaTest {
     @Before
     public void setUp() {
         this.tetris = new Tetris();
-        this.kuuntelija = new Nappaimistonkuuntelija(new Piirtoalusta(tetris));
+        this.kuuntelija = new Nappaimistonkuuntelija();
     }
 
     @After

@@ -8,11 +8,14 @@ public class PalikanVaihtaja {
     private Tetris tetris;
     private Nappaimistonkuuntelija kuuntelija;
     private Liikuttaja liikuttaja;
+    private RivinTyhjentaja tyhjentaja;
 
-    public PalikanVaihtaja(Tetris tetris, Nappaimistonkuuntelija kuuntelija, Liikuttaja liikuttaja) {
+    public PalikanVaihtaja(Tetris tetris, Nappaimistonkuuntelija kuuntelija, Liikuttaja liikuttaja,
+            RivinTyhjentaja tyhjentaja) {
         this.tetris = tetris;
         this.kuuntelija = kuuntelija;
         this.liikuttaja = liikuttaja;
+        this.tyhjentaja = tyhjentaja;
     }
 
     public void vaihdaPalikka() {
@@ -20,5 +23,6 @@ public class PalikanVaihtaja {
         uusi.lisaaPala(new Pala());
         tetris.setPalikka(uusi);
         kuuntelija.setPalikka(uusi);
+        tyhjentaja.tarkistaRivit();
     }
 }

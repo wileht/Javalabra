@@ -37,7 +37,7 @@ public class Kayttoliittyma implements Runnable {
         container.setLayout(new BorderLayout());
         this.alusta = new Piirtoalusta(tetris);
         container.add(alusta);
-        this.kuuntelija = new Nappaimistonkuuntelija(alusta);
+        this.kuuntelija = new Nappaimistonkuuntelija();
         kuuntelija.setPalikka(tetris.getPalikka());
         frame.addKeyListener(kuuntelija);
     }

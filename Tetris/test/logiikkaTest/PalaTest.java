@@ -1,7 +1,7 @@
 package logiikkaTest;
 
-import static org.junit.Assert.assertEquals;
 import org.junit.*;
+import static org.junit.Assert.assertEquals;
 import tetris.logiikka.Pala;
 
 public class PalaTest {
@@ -30,7 +30,7 @@ public class PalaTest {
     }
 
     // Luokka Pala on niin yksinkertainen, että Pala voi siis liikkua
-    // pelialueen ulkopuolellekin
+    // pelialueen ulkopuolellekin, poikkeus-/rajatapauksia ei siis ole
     @Test
     public void palaLiikkuuOikeanVerran() {
         pala.liiku(5, 5);

@@ -9,6 +9,7 @@ import tetris.logiikka.Liikuttaja;
 import tetris.logiikka.Pala;
 import tetris.logiikka.PalikanVaihtaja;
 import tetris.logiikka.Palikka;
+import tetris.logiikka.RivinTyhjentaja;
 
 public class PalikkaTest {
 
@@ -30,8 +31,9 @@ public class PalikkaTest {
     public void setUp() {
         Tetris tetris = new Tetris();
         Liikuttaja liikuttaja = new Liikuttaja(tetris);
-        liikuttaja.setVaihtaja(new PalikanVaihtaja(tetris, new Nappaimistonkuuntelija(
-                new Piirtoalusta(tetris)), liikuttaja));
+        liikuttaja.setVaihtaja(new PalikanVaihtaja(tetris, new Nappaimistonkuuntelija(),
+                liikuttaja, new RivinTyhjentaja(tetris)));
+        liikuttaja.setAlusta(new Piirtoalusta(tetris));
         this.palikka = new Palikka(liikuttaja);
         Pala pala = new Pala();
         palikka.lisaaPala(pala);

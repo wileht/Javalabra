@@ -4,14 +4,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.Timer;
-import tetris.gui.Piirtoalusta;
 import tetris.logiikka.Pala;
 import tetris.logiikka.Palikka;
 import tetris.logiikka.RivinTyhjentaja;
 
 public class Tetris extends Timer implements ActionListener {
 
-    private Piirtoalusta alusta;
     private int palanKoko;
     private ArrayList<Pala> palat;
     private Palikka palikka;
@@ -32,7 +30,6 @@ public class Tetris extends Timer implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         palikka.liiku(0, 25);
-        alusta.paivita();
     }
 
     private void luoEnsimmainenPalikka() {
@@ -40,10 +37,6 @@ public class Tetris extends Timer implements ActionListener {
         Pala ekaPala = new Pala();
         this.palat.add(ekaPala);
         this.palikka.lisaaPala(ekaPala);
-    }
-
-    public void setAlusta(Piirtoalusta alusta) {
-        this.alusta = alusta;
     }
 
     public int getPalanKoko() {
@@ -64,7 +57,7 @@ public class Tetris extends Timer implements ActionListener {
     public void lisaaPala(Pala pala) {
         this.palat.add(pala);
     }
-    
+
     public void poistaPalat(ArrayList<Pala> poistettavat) {
         for (Pala pala : poistettavat) {
             this.palat.remove(pala);
@@ -77,7 +70,9 @@ public class Tetris extends Timer implements ActionListener {
 
     public void tiputaYlempiaRiveja(int i) {
         for (Pala pala : palat) {
-            pala.liiku(0, 25);
+            if (pala.getY() <= i * 25 - 12) {
+                pala.liiku(0, 25);
+            }
             tyhjentaja.tarkistaRivit();
         }
     }

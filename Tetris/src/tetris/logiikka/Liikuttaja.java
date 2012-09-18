@@ -1,12 +1,13 @@
 package tetris.logiikka;
 
 import tetris.Tetris;
+import tetris.gui.Piirtoalusta;
 
 public class Liikuttaja {
 
     private Tetris tetris;
     private PalikanVaihtaja vaihtaja;
-    private RivinTyhjentaja tyhjentaja;
+    private Piirtoalusta alusta;
 
     public Liikuttaja(Tetris tetris) {
         this.tetris = tetris;
@@ -24,6 +25,7 @@ public class Liikuttaja {
         }
 
         vaihdetaankoPalikka(palikka);
+        alusta.paivita();
     }
 
     public boolean tormaakoSeinaan(Pala pala, int dx, int dy) {
@@ -54,7 +56,7 @@ public class Liikuttaja {
 
     public void vaihdetaankoPalikka(Palikka palikka) {
         if (osuukoLattiaan(palikka) || onkoAllaToinenPala(palikka)) {
-            vaihdaPalikka();
+            vaihtaja.vaihdaPalikka();
         }
     }
 
@@ -82,12 +84,7 @@ public class Liikuttaja {
         return false;
     }
 
-    public void vaihdaPalikka() {
-        vaihtaja.vaihdaPalikka();
-        tyhjentaja.tarkistaRivit();
-    }
-
-    public void setTyhjentaja(RivinTyhjentaja tyhjentaja) {
-        this.tyhjentaja = tyhjentaja;
+    public void setAlusta(Piirtoalusta alusta) {
+        this.alusta = alusta;
     }
 }

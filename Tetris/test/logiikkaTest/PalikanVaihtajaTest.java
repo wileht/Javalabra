@@ -7,6 +7,7 @@ import tetris.gui.Nappaimistonkuuntelija;
 import tetris.gui.Piirtoalusta;
 import tetris.logiikka.Liikuttaja;
 import tetris.logiikka.PalikanVaihtaja;
+import tetris.logiikka.RivinTyhjentaja;
 
 public class PalikanVaihtajaTest {
 
@@ -29,9 +30,9 @@ public class PalikanVaihtajaTest {
     @Before
     public void setUp() {
         this.tetris = new Tetris();
-        this.kuuntelija = new Nappaimistonkuuntelija(new Piirtoalusta(tetris));
+        this.kuuntelija = new Nappaimistonkuuntelija();
         this.liikuttaja = new Liikuttaja(tetris);
-        this.vaihtaja = new PalikanVaihtaja(tetris, kuuntelija, liikuttaja);
+        this.vaihtaja = new PalikanVaihtaja(tetris, kuuntelija, liikuttaja, new RivinTyhjentaja(tetris));
     }
 
     @After

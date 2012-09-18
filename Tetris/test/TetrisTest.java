@@ -27,8 +27,8 @@ public class TetrisTest {
     public void setUp() {
         this.tetris = new Tetris();
         Liikuttaja liikuttaja = new Liikuttaja(tetris);
+        liikuttaja.setAlusta(new Piirtoalusta(tetris));
         tetris.getPalikka().setLiikuttaja(liikuttaja);
-        tetris.setAlusta(new Piirtoalusta(tetris));
     }
 
     @After

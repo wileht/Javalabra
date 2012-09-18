@@ -7,10 +7,8 @@ import tetris.logiikka.Palikka;
 public class Nappaimistonkuuntelija implements KeyListener {
 
     private Palikka palikka;
-    private Piirtoalusta alusta;
 
-    public Nappaimistonkuuntelija(Piirtoalusta alusta) {
-        this.alusta = alusta;
+    public Nappaimistonkuuntelija() {
     }
 
     public void setPalikka(Palikka palikka) {
@@ -29,8 +27,8 @@ public class Nappaimistonkuuntelija implements KeyListener {
             palikka.liiku(25, 0);
         } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
             palikka.liiku(0, 25);
+        } else if (e.getKeyCode() == KeyEvent.VK_UP) {
         }
-        alusta.paivita();
     }
 
     @Override

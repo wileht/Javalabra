@@ -35,7 +35,7 @@ public class RivinTyhjentajaTest {
         liikuttaja.setAlusta(new Piirtoalusta(tetris));
         liikuttaja.setTormays(new Tormays(tetris));
         liikuttaja.setTyhjentaja(tyhjentaja);
-        
+
         for (int i = 0; i < 14; i++) {
             Pala uusi = new Pala();
             uusi.liiku(-175, 25);

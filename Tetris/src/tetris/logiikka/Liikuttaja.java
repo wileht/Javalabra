@@ -17,9 +17,7 @@ public class Liikuttaja {
 
     public void liikuta(Palikka palikka, int dx, int dy) {
         for (Pala pala : palikka.getPalat()) {
-            if (tormays.tormaakoPalaSeinaan(pala, pala.getX() + dx, pala.getX() + dx)
-                    || tormays.tormaakoPalaLattiaan(pala, pala.getY() + dy)
-                    || tormays.tormaakoPalaToiseenPalaan(pala, pala.getX() + dx, pala.getY() + dy)) {
+            if (tormaakoJohonkin(pala, dx, dy)) {
                 return;
             }
         }
@@ -32,8 +30,17 @@ public class Liikuttaja {
         alusta.paivita();
     }
 
+    public boolean tormaakoJohonkin(Pala pala, int dx, int dy) {
+        if (tormays.tormaakoPalaSeinaan(pala.getX() + dx)
+                || tormays.tormaakoPalaLattiaan(pala.getY() + dy)
+                || tormays.tormaakoPalaToiseenPalaan(pala, pala.getX() + dx, pala.getY() + dy)) {
+            return true;
+        }
+        return false;
+    }
+
     public void vaihdetaankoPalikka(Palikka palikka) {
-        if (tormays.osuukoPalikkaLattiaan(palikka) || tormays.onkoPalikanAllaToinenPala(palikka)) {
+        if (tormays.osuukoPalikkaLattiaan(palikka) || tormays.onkoPalikanAllaPala(palikka)) {
             vaihtaja.vaihdaPalikka();
         }
     }
@@ -50,7 +57,7 @@ public class Liikuttaja {
             tyhjentaja.tarkistaRivit();
         }
     }
-    
+
     public void setAlusta(Piirtoalusta alusta) {
         this.alusta = alusta;
     }

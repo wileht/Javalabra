@@ -36,7 +36,7 @@ public class TetrisTest {
         RivinTyhjentaja tyhjentaja = new RivinTyhjentaja(tetris, liikuttaja);
         liikuttaja.setTyhjentaja(tyhjentaja);
         PalikanVaihtaja vaihtaja = new PalikanVaihtaja(tetris, new Nappaimistonkuuntelija(),
-                 liikuttaja, tyhjentaja);
+                liikuttaja, tyhjentaja);
         vaihtaja.vaihdaPalikka();
         liikuttaja.setVaihtaja(vaihtaja);
     }

@@ -44,6 +44,13 @@ public class LiikuttajaTest {
     }
 
     @Test
+    public void palikkaLiikkuuOikeanVerran() {
+        liikuttaja.liikuta(palikka, 25, 25);
+        assertEquals(palikka.getPalat().get(0).getX(), 200, tarkkuus);
+        assertEquals(palikka.getPalat().get(0).getY(), 13, tarkkuus);
+    }
+
+    @Test
     public void palikkaEiVoiLiikkuaSeinanLapi() {
         liikuttaja.liikuta(palikka, -175, 0);
         liikuttaja.liikuta(palikka, -5, 0);
@@ -80,7 +87,7 @@ public class LiikuttajaTest {
     }
 
     @Test
-    public void palikkaVaihtuuKunLaskeudutaanToisellePalikalle() {
+    public void palikkaVaihtuuKunLaskeudutaanPalalle() {
         Palikka tormattava = new Palikka(liikuttaja);
         Pala pala = new Pala();
         tormattava.lisaaPala(pala);

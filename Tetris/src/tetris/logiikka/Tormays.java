@@ -9,15 +9,15 @@ public class Tormays {
     public Tormays(Tetris tetris) {
         this.tetris = tetris;
     }
-
-    public boolean tormaakoPalaSeinaan(Pala pala, int x, int y) {
-        if (x >= 0 && y <= 325) {
+    
+    public boolean tormaakoPalaSeinaan(int x) {
+        if (x >= 0 && x <= 325) {
             return false;
         }
         return true;
     }
 
-    public boolean tormaakoPalaLattiaan(Pala pala, int y) {
+    public boolean tormaakoPalaLattiaan(int y) {
         if (y <= 650) {
             return false;
         }
@@ -45,7 +45,7 @@ public class Tormays {
         return false;
     }
 
-    public boolean onkoPalikanAllaToinenPala(Palikka palikka) {
+    public boolean onkoPalikanAllaPala(Palikka palikka) {
         for (Pala toinenPala : tetris.getPalat()) {
             for (Pala pala : palikka.getPalat()) {
                 if (toinenPala.getX() == pala.getX() && toinenPala.getY() == pala.getY() + 25) {

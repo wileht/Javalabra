@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 import org.junit.*;
 import tetris.Tetris;
 import tetris.gui.Nappaimistonkuuntelija;
-import tetris.gui.Piirtoalusta;
 import tetris.logiikka.Liikuttaja;
 import tetris.logiikka.PalikanVaihtaja;
 import tetris.logiikka.RivinTyhjentaja;

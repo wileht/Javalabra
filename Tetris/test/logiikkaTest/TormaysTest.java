@@ -1,12 +1,11 @@
 package logiikkaTest;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import org.junit.*;
 import tetris.Tetris;
-import tetris.logiikka.Pala;
-import tetris.logiikka.Palikka;
-import tetris.logiikka.Tormays;
+import tetris.gui.Nappaimistonkuuntelija;
+import tetris.gui.Piirtoalusta;
+import tetris.logiikka.*;
 
 public class TormaysTest {
 
@@ -29,18 +28,29 @@ public class TormaysTest {
     @Before
     public void setUp() {
         this.tetris = new Tetris();
-        this.tormays = new Tormays(tetris);
-        this.palikka = new Palikka();
-        this.pala = new Pala();
-        palikka.lisaaPala(pala);
+        Liikuttaja liikuttaja = new Liikuttaja(tetris);
+        PalikanVaihtaja vaihtaja = new PalikanVaihtaja(tetris,
+                new Nappaimistonkuuntelija(), liikuttaja, new RivinTyhjentaja(tetris, liikuttaja));
+        this.tormays = new Tormays(tetris, vaihtaja);
+        liikuttaja.setTormays(tormays);
+        liikuttaja.setAlusta(new Piirtoalusta(tetris));
+        this.palikka = vaihtaja.luoNelioPalikka();
+        tetris.setPalikka(palikka);
     }
 
     @After
     public void tearDown() {
     }
 
-    
-    //Nämä tulevat testatuiksi epäsuorasti myös LiikkujaTestissä
+    @Test
+    public void palaTormaaRajoihin() {
+        assertFalse(tormays.tormaakoRajoihin(0, 325));
+        assertTrue(tormays.tormaakoRajoihin(-1, 10));
+        assertTrue(tormays.tormaakoRajoihin(326, 326));
+        assertFalse(tormays.tormaakoRajoihin(300, 650));
+        assertTrue(tormays.tormaakoRajoihin(300, 651));
+    }
+
     @Test
     public void palaTormaaSeinaan() {
         assertFalse(tormays.tormaakoPalaSeinaan(0));
@@ -55,38 +65,50 @@ public class TormaysTest {
     }
 
     @Test
-    public void palaTormaaToiseenPalaan() {
-        Pala uusi = new Pala();
-        uusi.liiku(25, 12);
-        tetris.lisaaPala(uusi);
+    public void palikkaTormaaUlkopuoliseenPalaan() {
+        tetris.lisaaPala(new Pala(200, 200));
 
-        assertFalse(tormays.tormaakoPalaToiseenPalaan(pala, pala.getX(), pala.getY()));
-        pala.liiku(24, 12);
-        assertFalse(tormays.tormaakoPalaToiseenPalaan(pala, pala.getX(), pala.getY()));
-        pala.liiku(1, 0);
-        assertTrue(tormays.tormaakoPalaToiseenPalaan(pala, pala.getX(), pala.getY()));
+        assertFalse(tormays.tormaakoPalikkaPalaan(palikka, 0, 0));
+        assertTrue(tormays.tormaakoPalikkaPalaan(palikka, 25, 212));
     }
 
-    // Tällä hetkellä testataan vain yhden Palan Palikoita
+    @Test
+    public void kaantynytPalikkaTormaaUlkopuoliseenPalaan() {
+        Pala uusi = new Pala(200, 200);
+        tetris.lisaaPala(uusi);
+        assertFalse(tormays.tormaakoKaantynytPalikkaPalaan(palikka,
+                tormays.palikanUlkopuolisetPalat(palikka)));
+
+        uusi.liiku(-25, -212);
+        assertTrue(tormays.tormaakoKaantynytPalikkaPalaan(palikka,
+                tormays.palikanUlkopuolisetPalat(palikka)));
+    }
+
     @Test
     public void palikkaOsuuLattiaan() {
         assertFalse(tormays.osuukoPalikkaLattiaan(palikka));
-        pala.liiku(0, 636);
+        palikka.liiku(0, 636);
         assertFalse(tormays.osuukoPalikkaLattiaan(palikka));
-        pala.liiku(0, 1);
+        palikka.liiku(0, 1);
         assertTrue(tormays.osuukoPalikkaLattiaan(palikka));
     }
 
     @Test
     public void palikkaOsuuAllaOlevaanPalaan() {
-        Pala uusi = new Pala();
-        uusi.liiku(0, 625);
-        tetris.lisaaPala(uusi);
+        tetris.lisaaPala(new Pala(175, 625));
 
         assertFalse(tormays.onkoPalikanAllaPala(palikka));
-        pala.liiku(0, 599);
+        palikka.liiku(0, 611);
         assertFalse(tormays.onkoPalikanAllaPala(palikka));
-        pala.liiku(0, 1);
+        palikka.liiku(0, 1);
         assertTrue(tormays.onkoPalikanAllaPala(palikka));
+    }
+
+    @Test
+    public void palikanUlkopuolisetPalatToimii() {
+        tetris.lisaaPala(new Pala(175, 625));
+        tetris.lisaaPala(new Pala(200, 600));
+
+        assertEquals(tormays.palikanUlkopuolisetPalat(palikka).size(), 2, 0.001);
     }
 }

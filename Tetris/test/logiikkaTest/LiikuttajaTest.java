@@ -1,5 +1,6 @@
 package logiikkaTest;
 
+import java.util.ArrayList;
 import static org.junit.Assert.assertEquals;
 import org.junit.*;
 import tetris.Tetris;
@@ -29,14 +30,12 @@ public class LiikuttajaTest {
     public void setUp() {
         this.tetris = new Tetris();
         this.liikuttaja = new Liikuttaja(tetris);
-        this.palikka = new Palikka(liikuttaja);
-        palikka.lisaaPala(new Pala());
-        tetris.setPalikka(palikka);
         PalikanVaihtaja vaihtaja = new PalikanVaihtaja(tetris, new Nappaimistonkuuntelija(),
                 liikuttaja, new RivinTyhjentaja(tetris, liikuttaja));
-        liikuttaja.setVaihtaja(vaihtaja);
         liikuttaja.setAlusta(new Piirtoalusta(tetris));
-        liikuttaja.setTormays(new Tormays(tetris));
+        liikuttaja.setTormays(new Tormays(tetris, vaihtaja));
+        this.palikka = vaihtaja.luoNelioPalikka();
+        tetris.setPalikka(palikka);
     }
 
     @After
@@ -46,19 +45,19 @@ public class LiikuttajaTest {
     @Test
     public void palikkaLiikkuuOikeanVerran() {
         liikuttaja.liikuta(palikka, 25, 25);
-        assertEquals(palikka.getPalat().get(0).getX(), 200, tarkkuus);
+        assertEquals(palikka.getPalat().get(0).getX(), 175, tarkkuus);
         assertEquals(palikka.getPalat().get(0).getY(), 13, tarkkuus);
     }
 
     @Test
     public void palikkaEiVoiLiikkuaSeinanLapi() {
-        liikuttaja.liikuta(palikka, -175, 0);
+        liikuttaja.liikuta(palikka, -150, 0);
         liikuttaja.liikuta(palikka, -5, 0);
         assertEquals(palikka.getPalat().get(0).getX(), 0, tarkkuus);
 
-        liikuttaja.liikuta(palikka, 325, 0);
+        liikuttaja.liikuta(palikka, 300, 0);
         liikuttaja.liikuta(palikka, 5, 0);
-        assertEquals(palikka.getPalat().get(0).getX(), 325, tarkkuus);
+        assertEquals(palikka.getPalat().get(0).getX(), 300, tarkkuus);
     }
 
     @Test
@@ -70,11 +69,12 @@ public class LiikuttajaTest {
 
     @Test
     public void palikkaEiVoiTormataToiseenPalikkaan() {
-        Palikka tormattava = new Palikka(liikuttaja);
-        Pala pala = new Pala();
-        tormattava.lisaaPala(pala);
-        tetris.lisaaPala(pala);
+        ArrayList<Pala> tormattavat = new ArrayList<>();
+        tormattavat.add(new Pala(150, -12));
+        Palikka tormattava = new Palikka(liikuttaja, tormattavat, new Pala(0, 0));
+        tetris.lisaaPalat(tormattavat);
         tormattava.liiku(30, 30);
+
         palikka.liiku(30, 30);
         assertEquals(palikka.getPalat().get(0).getX(), tormattava.getPalat().get(0).getX() - 30, tarkkuus);
         assertEquals(palikka.getPalat().get(0).getY(), tormattava.getPalat().get(0).getY() - 30, tarkkuus);
@@ -83,17 +83,18 @@ public class LiikuttajaTest {
     @Test
     public void palikkaVaihtuuKunOsutaanLattiaan() {
         palikka.liiku(0, 662);
-        assertEquals(tetris.getPalat().size(), 2, tarkkuus);
+        assertEquals(tetris.getPalat().size(), 8, tarkkuus);
     }
 
     @Test
     public void palikkaVaihtuuKunLaskeudutaanPalalle() {
-        Palikka tormattava = new Palikka(liikuttaja);
-        Pala pala = new Pala();
-        tormattava.lisaaPala(pala);
-        tetris.lisaaPala(pala);
+        ArrayList<Pala> tormattavat = new ArrayList<>();
+        tormattavat.add(new Pala(175, 0));
+        Palikka tormattava = new Palikka(liikuttaja, tormattavat, new Pala(0, 0));
+        tetris.lisaaPalat(tormattavat);
         tormattava.liiku(0, 600);
-        palikka.liiku(0, 575);
-        assertEquals(tetris.getPalat().size(), 3, tarkkuus);
+
+        palikka.liiku(0, 587);
+        assertEquals(tetris.getPalat().size(), 9, tarkkuus);
     }
 }

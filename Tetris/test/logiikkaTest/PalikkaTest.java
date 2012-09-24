@@ -27,13 +27,12 @@ public class PalikkaTest {
     public void setUp() {
         Tetris tetris = new Tetris();
         Liikuttaja liikuttaja = new Liikuttaja(tetris);
-        liikuttaja.setVaihtaja(new PalikanVaihtaja(tetris, new Nappaimistonkuuntelija(),
-                liikuttaja, new RivinTyhjentaja(tetris, liikuttaja)));
         liikuttaja.setAlusta(new Piirtoalusta(tetris));
-        this.palikka = new Palikka(liikuttaja);
-        Pala pala = new Pala();
-        palikka.lisaaPala(pala);
-        liikuttaja.setTormays(new Tormays(tetris));
+        PalikanVaihtaja vaihtaja = new PalikanVaihtaja(tetris, new Nappaimistonkuuntelija(), liikuttaja,
+                new RivinTyhjentaja(tetris, liikuttaja));
+        vaihtaja.vaihdaPalikka();
+        this.palikka = tetris.getPalikka();
+        liikuttaja.setTormays(new Tormays(tetris, vaihtaja));
     }
 
     @After
@@ -43,14 +42,10 @@ public class PalikkaTest {
     // Poikkeustapausten testaus LiikkujaTestissä
     @Test
     public void liikkuuOikeanVerran() {
-        palikka.liiku(25, 25);
-        assertEquals(palikka.getPalat().get(0).getX(), 200, tarkkuus);
-        assertEquals(palikka.getPalat().get(0).getY(), 13, tarkkuus);
-    }
-
-    @Test
-    public void lisaaPalaToimii() {
-        palikka.lisaaPala(new Pala());
-        assertEquals(palikka.getPalat().size(), 2, tarkkuus);
+        int Xalussa = palikka.getPalat().get(0).getX();
+        int Yalussa = palikka.getPalat().get(0).getY();
+        palikka.liiku(25, -20);
+        assertEquals(palikka.getPalat().get(0).getX(), Xalussa + 25, tarkkuus);
+        assertEquals(palikka.getPalat().get(0).getY(), Yalussa - 20, tarkkuus);
     }
 }

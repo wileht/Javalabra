@@ -56,4 +56,10 @@ public class Tetris extends Timer implements ActionListener {
     public ArrayList<Pala> getPalat() {
         return palat;
     }
+
+    public void lisaaPalat(ArrayList<Pala> kaantynytPalikka) {
+        for (Pala pala : kaantynytPalikka) {
+            this.palat.add(pala);
+        }
+    }
 }

@@ -6,7 +6,6 @@ import tetris.gui.Piirtoalusta;
 public class Liikuttaja {
 
     private Tetris tetris;
-    private PalikanVaihtaja vaihtaja;
     private Piirtoalusta alusta;
     private RivinTyhjentaja tyhjentaja;
     private Tormays tormays;
@@ -16,37 +15,29 @@ public class Liikuttaja {
     }
 
     public void liikuta(Palikka palikka, int dx, int dy) {
-        for (Pala pala : palikka.getPalat()) {
-            if (tormaakoJohonkin(pala, dx, dy)) {
-                return;
-            }
+        if (tormaakoLiikkunutPalikkaJohonkin(palikka, dx, dy)) {
+            return;
         }
 
         for (Pala pala : palikka.getPalat()) {
             pala.liiku(dx, dy);
         }
 
-        vaihdetaankoPalikka(palikka);
+        tormays.vaihdetaankoPalikka(palikka);
         alusta.paivita();
     }
 
-    public boolean tormaakoJohonkin(Pala pala, int dx, int dy) {
-        if (tormays.tormaakoPalaSeinaan(pala.getX() + dx)
-                || tormays.tormaakoPalaLattiaan(pala.getY() + dy)
-                || tormays.tormaakoPalaToiseenPalaan(pala, pala.getX() + dx, pala.getY() + dy)) {
+    public boolean tormaakoLiikkunutPalikkaJohonkin(Palikka palikka, int dx, int dy) {
+        for (Pala pala : palikka.getPalat()) {
+            if (tormays.tormaakoRajoihin(pala.getX() + dx, pala.getY() + dy)) {
+                return true;
+            }
+        }
+        if (tormays.tormaakoPalikkaPalaan(palikka, dx, dy)) {
             return true;
         }
+
         return false;
-    }
-
-    public void vaihdetaankoPalikka(Palikka palikka) {
-        if (tormays.osuukoPalikkaLattiaan(palikka) || tormays.onkoPalikanAllaPala(palikka)) {
-            vaihtaja.vaihdaPalikka();
-        }
-    }
-
-    public void setVaihtaja(PalikanVaihtaja vaihtaja) {
-        this.vaihtaja = vaihtaja;
     }
 
     public void tiputaYlempiaRiveja(int i) {
@@ -54,8 +45,8 @@ public class Liikuttaja {
             if (pala.getY() <= i * 25 - 12) {
                 pala.liiku(0, 25);
             }
-            tyhjentaja.tarkistaRivit();
         }
+        tyhjentaja.tarkistaRivit();
     }
 
     public void setAlusta(Piirtoalusta alusta) {

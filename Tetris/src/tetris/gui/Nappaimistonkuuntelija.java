@@ -2,11 +2,13 @@ package tetris.gui;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import tetris.logiikka.Kaantaja;
 import tetris.logiikka.Palikka;
 
 public class Nappaimistonkuuntelija implements KeyListener {
 
     private Palikka palikka;
+    private Kaantaja kaantaja;
 
     public Nappaimistonkuuntelija() {
     }
@@ -28,6 +30,7 @@ public class Nappaimistonkuuntelija implements KeyListener {
         } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
             palikka.liiku(0, 25);
         } else if (e.getKeyCode() == KeyEvent.VK_UP) {
+            kaantaja.kaanna(palikka);
         }
     }
 
@@ -37,5 +40,9 @@ public class Nappaimistonkuuntelija implements KeyListener {
 
     public Palikka getPalikka() {
         return palikka;
+    }
+
+    public void setKaantaja(Kaantaja kaantaja) {
+        this.kaantaja = kaantaja;
     }
 }

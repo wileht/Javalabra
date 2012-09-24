@@ -3,11 +3,9 @@ package logiikkaTest;
 import static org.junit.Assert.assertEquals;
 import org.junit.*;
 import tetris.Tetris;
+import tetris.gui.Nappaimistonkuuntelija;
 import tetris.gui.Piirtoalusta;
-import tetris.logiikka.Liikuttaja;
-import tetris.logiikka.Pala;
-import tetris.logiikka.RivinTyhjentaja;
-import tetris.logiikka.Tormays;
+import tetris.logiikka.*;
 
 public class RivinTyhjentajaTest {
 
@@ -33,11 +31,12 @@ public class RivinTyhjentajaTest {
         this.liikuttaja = new Liikuttaja(tetris);
         this.tyhjentaja = new RivinTyhjentaja(tetris, liikuttaja);
         liikuttaja.setAlusta(new Piirtoalusta(tetris));
-        liikuttaja.setTormays(new Tormays(tetris));
+        liikuttaja.setTormays(new Tormays(tetris, new PalikanVaihtaja(tetris,
+                new Nappaimistonkuuntelija(), liikuttaja, tyhjentaja)));
         liikuttaja.setTyhjentaja(tyhjentaja);
 
         for (int i = 0; i < 14; i++) {
-            Pala uusi = new Pala();
+            Pala uusi = new Pala(175, -12);
             uusi.liiku(-175, 25);
             uusi.liiku(i * 25, 0);
             tetris.lisaaPala(uusi);
@@ -62,7 +61,7 @@ public class RivinTyhjentajaTest {
 
     @Test
     public void rivinPoistuessaYlemmatPalatTippuvat() {
-        Pala tiputettava = new Pala();
+        Pala tiputettava = new Pala(175, -12);
         tetris.lisaaPala(tiputettava);
         tyhjentaja.tarkistaRivit();
         assertEquals(tiputettava.getX(), 175, tarkkuus);

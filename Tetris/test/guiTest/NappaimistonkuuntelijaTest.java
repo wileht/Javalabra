@@ -30,9 +30,9 @@ public class NappaimistonkuuntelijaTest {
     @After
     public void tearDown() {
     }
-    
+
     @Test
     public void PalikkaLiikkuuVasemmalle() {
         // KeyEventtien simulointia
-    } 
+    }
 }

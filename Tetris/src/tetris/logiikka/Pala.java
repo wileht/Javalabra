@@ -5,9 +5,9 @@ public class Pala {
     private int x;
     private int y;
 
-    public Pala() {
-        this.x = 175;
-        this.y = -12;
+    public Pala(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
 
     public int getX() {
@@ -21,5 +21,13 @@ public class Pala {
     public void liiku(int dx, int dy) {
         this.x += dx;
         this.y += dy;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
     }
 }

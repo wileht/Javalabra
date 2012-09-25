@@ -17,7 +17,7 @@ public class Kaantaja {
         int kiintoX = palikka.getKiintopiste().getX();
         int kiintoY = palikka.getKiintopiste().getY();
         int dx = kiintoX + kiintoY;
-        int dy = -1 * (kiintoX - kiintoY);
+        int dy = kiintoY - kiintoX;
 
         Palikka kaantynyt = luoTestipalikka(palikka, dx, dy);
 

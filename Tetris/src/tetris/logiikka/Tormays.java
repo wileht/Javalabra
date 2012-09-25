@@ -98,8 +98,8 @@ public class Tormays {
             vaihtaja.vaihdaPalikka();
         }
     }
-
-    public PalikanVaihtaja getVaihtaja() {
-        return vaihtaja;
-    }
+//
+//    public PalikanVaihtaja getVaihtaja() {
+//        return vaihtaja;
+//    }
 }

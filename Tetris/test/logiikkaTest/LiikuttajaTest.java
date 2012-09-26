@@ -34,7 +34,7 @@ public class LiikuttajaTest {
                 liikuttaja, new RivinTyhjentaja(tetris, liikuttaja));
         liikuttaja.setAlusta(new Piirtoalusta(tetris));
         liikuttaja.setTormays(new Tormays(tetris, vaihtaja));
-        this.palikka = vaihtaja.luoNelioPalikka();
+        this.palikka = vaihtaja.luoNelioPalikka(null);
         tetris.setPalikka(palikka);
     }
 
@@ -70,8 +70,8 @@ public class LiikuttajaTest {
     @Test
     public void palikkaEiVoiTormataToiseenPalikkaan() {
         ArrayList<Pala> tormattavat = new ArrayList<>();
-        tormattavat.add(new Pala(150, -12));
-        Palikka tormattava = new Palikka(liikuttaja, tormattavat, new Pala(0, 0));
+        tormattavat.add(new Pala(150, -12, null));
+        Palikka tormattava = new Palikka(liikuttaja, tormattavat, new Pala(0, 0, null));
         tetris.lisaaPalat(tormattavat);
         tormattava.liiku(30, 30);
 
@@ -89,8 +89,8 @@ public class LiikuttajaTest {
     @Test
     public void palikkaVaihtuuKunLaskeudutaanPalalle() {
         ArrayList<Pala> tormattavat = new ArrayList<>();
-        tormattavat.add(new Pala(175, 0));
-        Palikka tormattava = new Palikka(liikuttaja, tormattavat, new Pala(0, 0));
+        tormattavat.add(new Pala(175, 0, null));
+        Palikka tormattava = new Palikka(liikuttaja, tormattavat, new Pala(0, 0, null));
         tetris.lisaaPalat(tormattavat);
         tormattava.liiku(0, 600);
 

@@ -34,7 +34,7 @@ public class TormaysTest {
         this.tormays = new Tormays(tetris, vaihtaja);
         liikuttaja.setTormays(tormays);
         liikuttaja.setAlusta(new Piirtoalusta(tetris));
-        this.palikka = vaihtaja.luoNelioPalikka();
+        this.palikka = vaihtaja.luoNelioPalikka(null);
         tetris.setPalikka(palikka);
     }
 
@@ -66,7 +66,7 @@ public class TormaysTest {
 
     @Test
     public void palikkaTormaaUlkopuoliseenPalaan() {
-        tetris.lisaaPala(new Pala(200, 200));
+        tetris.lisaaPala(new Pala(200, 200, null));
 
         assertFalse(tormays.tormaakoPalikkaPalaan(palikka, 0, 0));
         assertTrue(tormays.tormaakoPalikkaPalaan(palikka, 25, 212));
@@ -74,7 +74,7 @@ public class TormaysTest {
 
     @Test
     public void kaantynytPalikkaTormaaUlkopuoliseenPalaan() {
-        Pala uusi = new Pala(200, 200);
+        Pala uusi = new Pala(200, 200, null);
         tetris.lisaaPala(uusi);
         assertFalse(tormays.tormaakoKaantynytPalikkaPalaan(palikka,
                 tormays.palikanUlkopuolisetPalat(palikka)));
@@ -95,7 +95,7 @@ public class TormaysTest {
 
     @Test
     public void palikkaOsuuAllaOlevaanPalaan() {
-        tetris.lisaaPala(new Pala(175, 625));
+        tetris.lisaaPala(new Pala(175, 625, null));
 
         assertFalse(tormays.onkoPalikanAllaPala(palikka));
         palikka.liiku(0, 611);
@@ -106,8 +106,8 @@ public class TormaysTest {
 
     @Test
     public void palikanUlkopuolisetPalatToimii() {
-        tetris.lisaaPala(new Pala(175, 625));
-        tetris.lisaaPala(new Pala(200, 600));
+        tetris.lisaaPala(new Pala(175, 625, null));
+        tetris.lisaaPala(new Pala(200, 600, null));
 
         assertEquals(tormays.palikanUlkopuolisetPalat(palikka).size(), 2, 0.001);
     }

@@ -5,6 +5,12 @@ import java.awt.event.KeyListener;
 import tetris.logiikka.Kaantaja;
 import tetris.logiikka.Palikka;
 
+/**
+ * Huolehtii Palikan näppäinohjauksesta toteuttamalla rajapinnan KeyListener
+ *
+ * @see java.awt.event.KeyListener
+ * @author Wille Lehtomäki
+ */
 public class Nappaimistonkuuntelija implements KeyListener {
 
     private Palikka palikka;
@@ -13,14 +19,17 @@ public class Nappaimistonkuuntelija implements KeyListener {
     public Nappaimistonkuuntelija() {
     }
 
-    public void setPalikka(Palikka palikka) {
-        this.palikka = palikka;
-    }
-
     @Override
     public void keyTyped(KeyEvent e) {
     }
 
+    /**
+     * Liikuttaa palikkaa haluttuun suuntaan, kääntää tai pudottaa sen
+     *
+     * @see tetris.logiikka.Palikka#liiku(int, int)
+     * @see tetris.logiikka.Kaantaja#kaanna(Palikka)
+     * @param e kuuntelijan tunnistama näppäimenpainallus
+     */
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
@@ -31,7 +40,13 @@ public class Nappaimistonkuuntelija implements KeyListener {
             palikka.liiku(0, 25);
         } else if (e.getKeyCode() == KeyEvent.VK_UP) {
             kaantaja.kaanna(palikka);
+        } else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+            palikka.putoa();
         }
+    }
+
+    public void setPalikka(Palikka palikka) {
+        this.palikka = palikka;
     }
 
     @Override

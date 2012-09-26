@@ -7,6 +7,12 @@ import javax.swing.Timer;
 import tetris.logiikka.Pala;
 import tetris.logiikka.Palikka;
 
+/**
+ * Pitää kirjaa kaikista Paloista ja pudottaa automaattisesti kulloinkin
+ * käsiteltävää Palikkaa määrätyn aikavälein välein
+ *
+ * @author Wille Lehtomäki
+ */
 public class Tetris extends Timer implements ActionListener {
 
     private int palanKoko;
@@ -23,9 +29,45 @@ public class Tetris extends Timer implements ActionListener {
         this.palat = new ArrayList<>();
     }
 
+    /**
+     * Pudottaa kulloistakin Palikkaa asetetun aikavälin välein
+     *
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         palikka.liiku(0, 25);
+    }
+
+    /**
+     * Lisää annetun Palan Tetrikseen
+     *
+     * @param pala lisättävä Pala
+     */
+    public void lisaaPala(Pala pala) {
+        this.palat.add(pala);
+    }
+
+    /**
+     * Poistaa annetut Palat Tetriksestä
+     *
+     * @param poistettavat poistettavat Palat
+     */
+    public void poistaPalat(ArrayList<Pala> poistettavat) {
+        for (Pala pala : poistettavat) {
+            this.palat.remove(pala);
+        }
+    }
+
+    /**
+     * Lisää annetut Palat Tetrikseen
+     *
+     * @param lisattavat lisättävät palat
+     */
+    public void lisaaPalat(ArrayList<Pala> lisattavat) {
+        for (Pala pala : lisattavat) {
+            this.palat.add(pala);
+        }
     }
 
     public int getPalanKoko() {
@@ -43,23 +85,7 @@ public class Tetris extends Timer implements ActionListener {
         return palikka;
     }
 
-    public void lisaaPala(Pala pala) {
-        this.palat.add(pala);
-    }
-
-    public void poistaPalat(ArrayList<Pala> poistettavat) {
-        for (Pala pala : poistettavat) {
-            this.palat.remove(pala);
-        }
-    }
-
     public ArrayList<Pala> getPalat() {
         return palat;
-    }
-
-    public void lisaaPalat(ArrayList<Pala> kaantynytPalikka) {
-        for (Pala pala : kaantynytPalikka) {
-            this.palat.add(pala);
-        }
     }
 }

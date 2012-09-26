@@ -3,6 +3,11 @@ package tetris.logiikka;
 import java.util.ArrayList;
 import tetris.Tetris;
 
+/**
+ * Tarkistaa pelialueen rivit ja tyhjentää täydet rivit
+ *
+ * @author Wille Lehtomäki
+ */
 public class RivinTyhjentaja {
 
     private Tetris tetris;
@@ -13,6 +18,13 @@ public class RivinTyhjentaja {
         this.liikuttaja = liikuttaja;
     }
 
+    /**
+     * Käy läpi kaikki pelialueen rivit ja tyhjentää täydet rivit. Rivin
+     * tyhjentyessä pudotetaan ylempänä olevia Paloja.
+     *
+     * @see tyhjennaRivi(int)
+     * @see tiputaYlempiaRiveja(int)
+     */
     public void tarkistaRivit() {
         for (int i = 1; i <= 27; i++) {
             int montakoPalaaRivissa = 0;
@@ -30,6 +42,13 @@ public class RivinTyhjentaja {
         }
     }
 
+    /**
+     * Kerää tyhjennettävällä rivillä olevat Palat listaan ja antaa ne luokalle
+     * Tetris poistettaviksi
+     *
+     * @param i tyhjennettävän rivin numero
+     * @see tetris.Tetris#poistaPalat(ArrayList<Pala>)
+     */
     public void tyhjennaRivi(int i) {
         ArrayList<Pala> poistettavat = new ArrayList<>();
         for (Pala pala : tetris.getPalat()) {
@@ -40,6 +59,12 @@ public class RivinTyhjentaja {
         tetris.poistaPalat(poistettavat);
     }
 
+    /**
+     * Tiputtaa kaikkien ylempien rivien Paloja
+     *
+     * @param i rivi, jota ylempänä sijaitsevia Paloja pudotetaan
+     * @see tetris.logiikka.Liikuttaja(tiputaYlempiaRiveja(int)
+     */
     public void tiputaYlempiaRiveja(int i) {
         liikuttaja.tiputaYlempiaRiveja(i);
     }

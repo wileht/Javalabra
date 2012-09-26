@@ -36,7 +36,7 @@ public class RivinTyhjentajaTest {
         liikuttaja.setTyhjentaja(tyhjentaja);
 
         for (int i = 0; i < 14; i++) {
-            Pala uusi = new Pala(175, -12);
+            Pala uusi = new Pala(175, -12, null);
             uusi.liiku(-175, 25);
             uusi.liiku(i * 25, 0);
             tetris.lisaaPala(uusi);
@@ -61,7 +61,7 @@ public class RivinTyhjentajaTest {
 
     @Test
     public void rivinPoistuessaYlemmatPalatTippuvat() {
-        Pala tiputettava = new Pala(175, -12);
+        Pala tiputettava = new Pala(175, -12, null);
         tetris.lisaaPala(tiputettava);
         tyhjentaja.tarkistaRivit();
         assertEquals(tiputettava.getX(), 175, tarkkuus);

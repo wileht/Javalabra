@@ -10,6 +10,7 @@ import tetris.logiikka.*;
 public class PalikkaTest {
 
     private Palikka palikka;
+    private Tetris tetris;
     private double tarkkuus = 0.001;
 
     public PalikkaTest() {
@@ -25,13 +26,13 @@ public class PalikkaTest {
 
     @Before
     public void setUp() {
-        Tetris tetris = new Tetris();
+        this.tetris = new Tetris();
         Liikuttaja liikuttaja = new Liikuttaja(tetris);
         liikuttaja.setAlusta(new Piirtoalusta(tetris));
         PalikanVaihtaja vaihtaja = new PalikanVaihtaja(tetris, new Nappaimistonkuuntelija(), liikuttaja,
                 new RivinTyhjentaja(tetris, liikuttaja));
-        vaihtaja.vaihdaPalikka();
-        this.palikka = tetris.getPalikka();
+        this.palikka = vaihtaja.luoNelioPalikka(null);
+        tetris.setPalikka(palikka);
         liikuttaja.setTormays(new Tormays(tetris, vaihtaja));
     }
 
@@ -47,5 +48,18 @@ public class PalikkaTest {
         palikka.liiku(25, -20);
         assertEquals(palikka.getPalat().get(0).getX(), Xalussa + 25, tarkkuus);
         assertEquals(palikka.getPalat().get(0).getY(), Yalussa - 20, tarkkuus);
+    }
+    
+    @Test
+    public void pudotusLattialle() {
+        palikka.putoa();
+        assertEquals(palikka.getPalat().get(0).getY(), 638, tarkkuus);
+    }
+    
+    @Test
+    public void pudotusUlkopuolisellePalalle() {
+        tetris.lisaaPala(new Pala(175, 188, null));
+        palikka.putoa();
+        assertEquals(palikka.getPalat().get(0).getY(), 163, tarkkuus);
     }
 }

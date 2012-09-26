@@ -22,7 +22,7 @@ public class PalaTest {
 
     @Before
     public void setUp() {
-        this.pala = new Pala(175, -12);
+        this.pala = new Pala(175, -12, null);
     }
 
     @After

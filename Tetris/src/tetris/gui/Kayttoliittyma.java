@@ -7,6 +7,11 @@ import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 import tetris.Tetris;
 
+/**
+ * Graafisen käyttöliittymän runko
+ *
+ * @author Wille Lehtomäki
+ */
 public class Kayttoliittyma implements Runnable {
 
     private JFrame frame;
@@ -18,6 +23,11 @@ public class Kayttoliittyma implements Runnable {
         this.tetris = tetris;
     }
 
+    /**
+     * Luo käyttöliittymän
+     *
+     * @see luoKomponentit(Container container)
+     */
     @Override
     public void run() {
         frame = new JFrame("Tetris");
@@ -33,6 +43,11 @@ public class Kayttoliittyma implements Runnable {
         frame.setVisible(true);
     }
 
+    /**
+     * Luo käyttöliittymän komponentit
+     *
+     * @param container
+     */
     private void luoKomponentit(Container container) {
         container.setLayout(new BorderLayout());
         this.alusta = new Piirtoalusta(tetris);

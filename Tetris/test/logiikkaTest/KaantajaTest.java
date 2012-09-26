@@ -36,7 +36,7 @@ public class KaantajaTest {
         Piirtoalusta alusta = new Piirtoalusta(tetris);
         liikuttaja.setAlusta(alusta);
         this.kaantaja = new Kaantaja(alusta, tormays);
-        this.palikka = vaihtaja.luoPitkulaPalikka();
+        this.palikka = vaihtaja.luoPitkulaPalikka(null);
         tetris.setPalikka(palikka);
     }
 
@@ -80,7 +80,7 @@ public class KaantajaTest {
 
     @Test
     public void palikkaEiVoiKaantyaUlkopuolisenPalanPaalle() {
-        tetris.lisaaPala(new Pala(225, -37));
+        tetris.lisaaPala(new Pala(225, -37, null));
         kaantaja.kaanna(palikka);
 
         assertEquals(palikka.getPalat().get(0).getX(), 175, tarkkuus);

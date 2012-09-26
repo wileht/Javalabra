@@ -54,7 +54,7 @@ public class PalikanVaihtajaTest {
 
     @Test
     public void nelioPalikanLuonti() {
-        Palikka palikka = vaihtaja.luoNelioPalikka();
+        Palikka palikka = vaihtaja.luoNelioPalikka(null);
 
         assertEquals(palikka.getPalat().get(0).getX(), 150, tarkkuus);
         assertEquals(palikka.getPalat().get(0).getY(), -12, tarkkuus);
@@ -71,7 +71,7 @@ public class PalikanVaihtajaTest {
 
     @Test
     public void pitkulaPalikanLuonti() {
-        Palikka palikka = vaihtaja.luoPitkulaPalikka();
+        Palikka palikka = vaihtaja.luoPitkulaPalikka(null);
 
         assertEquals(palikka.getPalat().get(0).getX(), 175, tarkkuus);
         assertEquals(palikka.getPalat().get(0).getY(), -12, tarkkuus);
@@ -88,7 +88,7 @@ public class PalikanVaihtajaTest {
 
     @Test
     public void LPalikanLuonti() {
-        Palikka palikka = vaihtaja.luoLPalikka();
+        Palikka palikka = vaihtaja.luoLPalikka(null);
 
         assertEquals(palikka.getPalat().get(0).getX(), 200, tarkkuus);
         assertEquals(palikka.getPalat().get(0).getY(), -12, tarkkuus);
@@ -105,7 +105,7 @@ public class PalikanVaihtajaTest {
 
     @Test
     public void JPalikanLuonti() {
-        Palikka palikka = vaihtaja.luoJPalikka();
+        Palikka palikka = vaihtaja.luoJPalikka(null);
 
         assertEquals(palikka.getPalat().get(0).getX(), 150, tarkkuus);
         assertEquals(palikka.getPalat().get(0).getY(), -12, tarkkuus);
@@ -122,7 +122,7 @@ public class PalikanVaihtajaTest {
 
     @Test
     public void TPalikanLuonti() {
-        Palikka palikka = vaihtaja.luoTPalikka();
+        Palikka palikka = vaihtaja.luoTPalikka(null);
 
         assertEquals(palikka.getPalat().get(0).getX(), 150, tarkkuus);
         assertEquals(palikka.getPalat().get(0).getY(), -37, tarkkuus);
@@ -139,7 +139,7 @@ public class PalikanVaihtajaTest {
 
     @Test
     public void SPalikanLuonti() {
-        Palikka palikka = vaihtaja.luoSPalikka();
+        Palikka palikka = vaihtaja.luoSPalikka(null);
 
         assertEquals(palikka.getPalat().get(0).getX(), 150, tarkkuus);
         assertEquals(palikka.getPalat().get(0).getY(), -12, tarkkuus);
@@ -156,7 +156,7 @@ public class PalikanVaihtajaTest {
 
     @Test
     public void ZPalikanLuonti() {
-        Palikka palikka = vaihtaja.luoZPalikka();
+        Palikka palikka = vaihtaja.luoZPalikka(null);
 
         assertEquals(palikka.getPalat().get(0).getX(), 150, tarkkuus);
         assertEquals(palikka.getPalat().get(0).getY(), -37, tarkkuus);

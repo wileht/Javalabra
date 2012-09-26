@@ -64,7 +64,7 @@ public class TetrisTest {
 
     @Test
     public void palanLisaysToimii() {
-        tetris.lisaaPala(new Pala(100, 100));
+        tetris.lisaaPala(new Pala(100, 100, null));
         assertEquals(tetris.getPalat().size(), 5, tarkkuus);
     }
 

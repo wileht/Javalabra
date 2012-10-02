@@ -45,7 +45,7 @@ public class Liikuttaja {
         alusta.paivita();
     }
 
-    private boolean tormaakoLiikkunutPalikkaJohonkin(Palikka palikka, int dx, int dy) {
+    public boolean tormaakoLiikkunutPalikkaJohonkin(Palikka palikka, int dx, int dy) {
         for (Pala pala : palikka.getPalat()) {
             if (tormays.tormaakoRajoihin(pala.getX() + dx, pala.getY() + dy)) {
                 return true;

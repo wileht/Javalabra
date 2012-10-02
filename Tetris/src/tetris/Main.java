@@ -25,9 +25,12 @@ public class Main {
 
         RivinTyhjentaja tyhjentaja = new RivinTyhjentaja(tetris, liikuttaja);
         liikuttaja.setTyhjentaja(tyhjentaja);
+        
+        Pisteidenlaskija laskija = new Pisteidenlaskija(tetris);
+        liittyma.getAlusta().setLaskija(laskija);
+        tyhjentaja.setLaskija(laskija);
 
         PalikanVaihtaja vaihtaja = new PalikanVaihtaja(tetris, liittyma.getKuuntelija(), liikuttaja, tyhjentaja);
-        vaihtaja.vaihdaPalikka();
 
         Tormays tormays = new Tormays(tetris, vaihtaja);
         liikuttaja.setTormays(tormays);
@@ -35,6 +38,8 @@ public class Main {
         Kaantaja kaantaja = new Kaantaja(liittyma.getAlusta(), tormays);
         liittyma.getKuuntelija().setKaantaja(kaantaja);
 
+        vaihtaja.vaihdaPalikka();
         tetris.start();
+        laskija.start();
     }
 }

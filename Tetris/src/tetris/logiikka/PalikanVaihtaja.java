@@ -38,6 +38,9 @@ public class PalikanVaihtaja {
      */
     public void vaihdaPalikka() {
         Palikka uusi = luoUusiPalikka();
+        if (liikuttaja.tormaakoLiikkunutPalikkaJohonkin(uusi, 0, 0)) {
+            lopeta();
+        }
         tetris.setPalikka(uusi);
         kuuntelija.setPalikka(uusi);
         tyhjentaja.tarkistaRivit();
@@ -195,6 +198,26 @@ public class PalikanVaihtaja {
      * @return arvottu väri
      */
     private Color annaVari() {
-        return new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256));
+        Color vari = null;
+        while (true) {
+            vari = new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256));
+            if (Math.abs(vari.getRed() - 238) + Math.abs(vari.getGreen() - 238)
+                    + Math.abs(vari.getBlue() - 238) >= 60) {
+                break;
+            }
+        }
+        return vari;
+    }
+
+    /**
+     * Lopettaa pelin pysäyttämällä Palikoiden automaattisen tiputuksen
+     * ja näppäinohjauksen
+     * 
+     * @see tetris.Tetris#lopeta()
+     * @see tetris.logiikka.Nappaimistonkuuntelija#lopeta()
+     */
+    private void lopeta() {
+        tetris.lopeta();
+        kuuntelija.lopeta();
     }
 }

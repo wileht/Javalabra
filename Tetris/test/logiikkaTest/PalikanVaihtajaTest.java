@@ -4,10 +4,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.*;
 import tetris.Tetris;
 import tetris.gui.Nappaimistonkuuntelija;
-import tetris.logiikka.Liikuttaja;
-import tetris.logiikka.PalikanVaihtaja;
-import tetris.logiikka.Palikka;
-import tetris.logiikka.RivinTyhjentaja;
+import tetris.logiikka.*;
 
 public class PalikanVaihtajaTest {
 
@@ -34,6 +31,7 @@ public class PalikanVaihtajaTest {
         this.kuuntelija = new Nappaimistonkuuntelija();
         this.liikuttaja = new Liikuttaja(tetris);
         this.vaihtaja = new PalikanVaihtaja(tetris, kuuntelija, liikuttaja, new RivinTyhjentaja(tetris, liikuttaja));
+        liikuttaja.setTormays(new Tormays(tetris, vaihtaja));
     }
 
     @After

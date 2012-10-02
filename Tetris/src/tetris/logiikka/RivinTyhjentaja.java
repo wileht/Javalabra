@@ -12,6 +12,7 @@ public class RivinTyhjentaja {
 
     private Tetris tetris;
     private Liikuttaja liikuttaja;
+    private Pisteidenlaskija laskija;
 
     public RivinTyhjentaja(Tetris tetris, Liikuttaja liikuttaja) {
         this.tetris = tetris;
@@ -37,6 +38,7 @@ public class RivinTyhjentaja {
             }
             if (montakoPalaaRivissa == 14) {
                 tyhjennaRivi(i);
+                laskija.lisaaRivinPisteet();
                 tiputaYlempiaRiveja(i);
             }
         }
@@ -67,5 +69,9 @@ public class RivinTyhjentaja {
      */
     public void tiputaYlempiaRiveja(int i) {
         liikuttaja.tiputaYlempiaRiveja(i);
+    }
+
+    public void setLaskija(Pisteidenlaskija laskija) {
+        this.laskija = laskija;
     }
 }

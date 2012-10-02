@@ -69,6 +69,36 @@ public class Tetris extends Timer implements ActionListener {
             this.palat.add(pala);
         }
     }
+    
+    
+    /**
+     * Nopeuttaa peliä lyhentämällä Palikoiden automaattisen tiputuksen viivettä
+     */
+    public void nopeuta() {
+        int alussa = super.getDelay();
+        if (alussa > 600) {
+            super.setDelay(alussa - 35);
+        } else if (alussa > 500) {
+            super.setDelay(alussa - 30);
+        } else if (alussa > 400) {
+            super.setDelay(alussa - 25);
+        } else if (alussa > 300) {
+            super.setDelay(alussa - 20);
+        } else if (alussa > 200) {
+            super.setDelay(alussa - 15);
+        } else if (alussa > 100) {
+            super.setDelay(alussa - 10);
+        } else if (alussa > 50) {
+            super.setDelay(alussa - 5);
+        }
+    }
+
+    /**
+     * Lopettaa Palikoiden automaattisen tiputuksen
+     */
+    public void lopeta() {
+        super.stop();
+    }
 
     public int getPalanKoko() {
         return palanKoko;

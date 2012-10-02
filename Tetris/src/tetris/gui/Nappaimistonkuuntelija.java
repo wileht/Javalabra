@@ -15,8 +15,10 @@ public class Nappaimistonkuuntelija implements KeyListener {
 
     private Palikka palikka;
     private Kaantaja kaantaja;
+    private boolean jatketaanko;
 
     public Nappaimistonkuuntelija() {
+        this.jatketaanko = true;
     }
 
     @Override
@@ -32,6 +34,9 @@ public class Nappaimistonkuuntelija implements KeyListener {
      */
     @Override
     public void keyPressed(KeyEvent e) {
+        if (!jatketaanko) {
+            return;
+        }
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             palikka.liiku(-25, 0);
         } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
@@ -43,6 +48,13 @@ public class Nappaimistonkuuntelija implements KeyListener {
         } else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
             palikka.putoa();
         }
+    }
+    
+    /**
+     * Lopettaa Palikoiden näppäinohjauksen
+     */
+    public void lopeta() {
+        this.jatketaanko = false;
     }
 
     public void setPalikka(Palikka palikka) {

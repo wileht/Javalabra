@@ -12,6 +12,7 @@ public class RivinTyhjentajaTest {
     private RivinTyhjentaja tyhjentaja;
     private Tetris tetris;
     private Liikuttaja liikuttaja;
+    private Pisteidenlaskija laskija;
     private double tarkkuus = 0.001;
 
     public RivinTyhjentajaTest() {
@@ -41,6 +42,8 @@ public class RivinTyhjentajaTest {
             uusi.liiku(i * 25, 0);
             tetris.lisaaPala(uusi);
         }
+        this.laskija = new Pisteidenlaskija(tetris);
+        tyhjentaja.setLaskija(laskija);
     }
 
     @After
@@ -66,5 +69,12 @@ public class RivinTyhjentajaTest {
         tyhjentaja.tarkistaRivit();
         assertEquals(tiputettava.getX(), 175, tarkkuus);
         assertEquals(tiputettava.getY(), 13, tarkkuus);
+    }
+    
+    @Test
+    public void rivinPoistuessaLisataanPisteet() {
+        tyhjentaja.tarkistaRivit();
+        
+        assertEquals(laskija.getPisteet(), 140 , tarkkuus);
     }
 }

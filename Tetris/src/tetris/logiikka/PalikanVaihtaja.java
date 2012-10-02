@@ -193,7 +193,8 @@ public class PalikanVaihtaja {
     }
 
     /**
-     * Arpoo ja palauttaa uuden värin
+     * Arpoo ja palauttaa uuden värin pitäen huolta, ettei saatu väri
+     * ole pelin taustan värinen
      *
      * @return arvottu väri
      */

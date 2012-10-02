@@ -43,19 +43,34 @@ public class KaantajaTest {
     @After
     public void tearDown() {
     }
-
+    
     @Test
-    public void palikkaKaantyyOikeanVerran() {
+    public void ensimmainenPalaKaantyyOikeanVerran() {
         kaantaja.kaanna(palikka);
 
         assertEquals(palikka.getPalat().get(0).getX(), 150, tarkkuus);
         assertEquals(palikka.getPalat().get(0).getY(), -37, tarkkuus);
+    }
+    
+    @Test
+    public void toinenPalaKaantyyOikeanVerran() {
+        kaantaja.kaanna(palikka);
 
         assertEquals(palikka.getPalat().get(1).getX(), 200, tarkkuus);
         assertEquals(palikka.getPalat().get(1).getY(), -37, tarkkuus);
+    }
+    
+    @Test
+    public void kolmasPalaKaantyyOikeanVerran() {
+        kaantaja.kaanna(palikka);
 
         assertEquals(palikka.getPalat().get(2).getX(), 225, tarkkuus);
         assertEquals(palikka.getPalat().get(2).getY(), -37, tarkkuus);
+    }
+    
+    @Test
+    public void neljasPalaKaantyyOikeanVerran() {
+        kaantaja.kaanna(palikka);
 
         assertEquals(palikka.getPalat().get(3).getX(), 175, tarkkuus);
         assertEquals(palikka.getPalat().get(3).getY(), -37, tarkkuus);

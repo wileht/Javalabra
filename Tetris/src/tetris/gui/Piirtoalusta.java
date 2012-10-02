@@ -41,7 +41,7 @@ public class Piirtoalusta extends JPanel {
         }
         graphics.setColor(Color.BLACK);
         graphics.drawString("" + laskija.getPisteet(), 50, 50);
-    } // k
+    }
 
     /**
      * Piirtää pelitilanteen uudelleen

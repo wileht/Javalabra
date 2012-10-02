@@ -60,7 +60,7 @@ public class Kaantaja {
      * x-koordinaatteihin
      * @param dy Kiintopisteestä saatu korjaus Palikan Palojen
      * y-koordinaatteihin
-     * @return
+     * @return käännetty kopio annetusta Palikasta
      */
     private Palikka luoTestipalikka(Palikka palikka, int dx, int dy) {
         ArrayList<Pala> kaantynytPalikka = new ArrayList<>();
@@ -76,6 +76,13 @@ public class Kaantaja {
         return testipalikka;
     }
 
+    /**
+     * Kokeilee, törmääkö kääntynyt testipalikka johonkin
+     * 
+     * @param palikka oikea, käännettävä palikka
+     * @param kaantynyt kääntynyt testipalikka
+     * @return 
+     */
     private boolean tormaakoTestiPalikkaJohonkin(Palikka palikka, Palikka kaantynyt) {
         for (Pala pala : kaantynyt.getPalat()) {
             if (tormays.tormaakoRajoihin(pala.getX(), pala.getY())) {

@@ -45,11 +45,12 @@ public class Nappaimistonkuuntelija implements KeyListener {
             palikka.liiku(0, 25);
         } else if (e.getKeyCode() == KeyEvent.VK_UP) {
             kaantaja.kaanna(palikka);
-        } else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+        } else if (e.getKeyCode() == KeyEvent.VK_ENTER
+                || e.getKeyCode() == KeyEvent.VK_SPACE) {
             palikka.putoa();
         }
     }
-    
+
     /**
      * Lopettaa Palikoiden näppäinohjauksen
      */

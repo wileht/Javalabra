@@ -41,19 +41,22 @@ public class TormaysTest {
     @After
     public void tearDown() {
     }
+    
+    @Test
+    public void sisallaOlevaPalaEiTormaaRajoihin() {
+        assertFalse(tormays.tormaakoRajoihin(0, 325));
+        assertFalse(tormays.tormaakoRajoihin(300, 650));
+    }
 
     @Test
     public void palaTormaaRajoihin() {
-        assertFalse(tormays.tormaakoRajoihin(0, 325));
         assertTrue(tormays.tormaakoRajoihin(-1, 10));
         assertTrue(tormays.tormaakoRajoihin(326, 326));
-        assertFalse(tormays.tormaakoRajoihin(300, 650));
         assertTrue(tormays.tormaakoRajoihin(300, 651));
     }
 
     @Test
     public void palaTormaaSeinaan() {
-        assertFalse(tormays.tormaakoPalaSeinaan(0));
         assertTrue(tormays.tormaakoPalaSeinaan(-1));
         assertTrue(tormays.tormaakoPalaSeinaan(400));
     }

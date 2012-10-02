@@ -6,7 +6,7 @@ import javax.swing.Timer;
 import tetris.Tetris;
 
 /**
- * Laskee pisteitä? Nopeuttaa?
+ * Laskee pisteitä ja käskee Tetristä nopeutumaan
  * 
  * @author Wille Lehtomäki
  */
@@ -23,10 +23,18 @@ public class Pisteidenlaskija extends Timer implements ActionListener {
         this.pisteet = 0;
     }
     
+    /**
+     * Lisää pisteet rivin tuhoutumisen jälkeen
+     */
     public void lisaaRivinPisteet() {
         this.pisteet += 140;
     }
 
+    /**
+     * Käskee Tetristä nopeutumaan
+     * 
+     * @param e 
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         tetris.nopeuta();

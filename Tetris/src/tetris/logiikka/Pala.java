@@ -21,7 +21,7 @@ public class Pala {
 
     /**
      * Liikuttaa Palaa annettujen parametrien mukaisesti. Tässä ei välitetä
-     * mahdollisista Törmäyksistä.
+     * mahdollisista törmäyksistä.
      *
      * @param dx Palan x-koordinaattiin haluttava muutos
      * @param dy Palan y-koordinaattiin haluttava muutos

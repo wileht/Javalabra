@@ -49,13 +49,13 @@ public class PalikkaTest {
         assertEquals(palikka.getPalat().get(0).getX(), Xalussa + 25, tarkkuus);
         assertEquals(palikka.getPalat().get(0).getY(), Yalussa - 20, tarkkuus);
     }
-    
+
     @Test
     public void pudotusLattialle() {
         palikka.putoa();
         assertEquals(palikka.getPalat().get(0).getY(), 638, tarkkuus);
     }
-    
+
     @Test
     public void pudotusUlkopuolisellePalalle() {
         tetris.lisaaPala(new Pala(175, 188, null));

@@ -21,9 +21,10 @@ public class RivinTyhjentaja {
 
     /**
      * Käy läpi kaikki pelialueen rivit ja tyhjentää täydet rivit. Rivin
-     * tyhjentyessä pudotetaan ylempänä olevia Paloja.
+     * tyhjentyessä pudotetaan ylempänä olevia Paloja ja annetaan pisteitä.
      *
      * @see tyhjennaRivi(int)
+     * @see tetris.logiikka.Pisteidenlaskija#lisaaRivinPisteet()
      * @see tiputaYlempiaRiveja(int)
      */
     public void tarkistaRivit() {
@@ -62,7 +63,7 @@ public class RivinTyhjentaja {
     }
 
     /**
-     * Tiputtaa kaikkien ylempien rivien Paloja
+     * Tiputtaa kaikkien ylempien rivien Paloja luokan Liikuttaja avullta
      *
      * @param i rivi, jota ylempänä sijaitsevia Paloja pudotetaan
      * @see tetris.logiikka.Liikuttaja(tiputaYlempiaRiveja(int)

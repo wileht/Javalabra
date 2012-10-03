@@ -30,8 +30,12 @@ public class PalikanVaihtaja {
 
     /**
      * Luo uuden Palikan ja antaa sen Tetrikselle ja Nappaimistonkuuntelijalle,
-     * sekä tarkistaa Pelialueen täysien rivien varalta
+     * sekä tarkistaa pelialueen täysien rivien varalta. Mikäli Palikka
+     * yritetään luoda ulkopuolisen Palan päälle, peli loppuu.
      *
+     * @see tetris.logiikka.Liikuttaja#tormaakoLiikkunutPalikkaJohonkin(Palikka,
+     * int, int)
+     * @see lopeta()
      * @see tetris.Tetris#setPalikka(Palikka)
      * @see tetris.gui.Nappaimistonkuuntelija#setPalikka(Palikka)
      * @see tetris.logiikka.RivinTyhjentaja#tarkistaRivit()
@@ -40,6 +44,7 @@ public class PalikanVaihtaja {
         Palikka uusi = luoUusiPalikka();
         if (liikuttaja.tormaakoLiikkunutPalikkaJohonkin(uusi, 0, 0)) {
             lopeta();
+            return;
         }
         tetris.setPalikka(uusi);
         kuuntelija.setPalikka(uusi);
@@ -193,8 +198,8 @@ public class PalikanVaihtaja {
     }
 
     /**
-     * Arpoo ja palauttaa uuden värin pitäen huolta, ettei saatu väri
-     * ole pelin taustan värinen
+     * Arpoo ja palauttaa uuden värin pitäen huolta, ettei saatu väri ole pelin
+     * taustan värinen
      *
      * @return arvottu väri
      */
@@ -211,9 +216,9 @@ public class PalikanVaihtaja {
     }
 
     /**
-     * Lopettaa pelin pysäyttämällä Palikoiden automaattisen tiputuksen
-     * ja näppäinohjauksen
-     * 
+     * Lopettaa pelin pysäyttämällä Palikoiden automaattisen tiputuksen ja
+     * näppäinohjauksen
+     *
      * @see tetris.Tetris#lopeta()
      * @see tetris.logiikka.Nappaimistonkuuntelija#lopeta()
      */

@@ -41,7 +41,7 @@ public class TormaysTest {
     @After
     public void tearDown() {
     }
-    
+
     @Test
     public void sisallaOlevaPalaEiTormaaRajoihin() {
         assertFalse(tormays.tormaakoRajoihin(0, 325));

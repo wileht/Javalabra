@@ -45,6 +45,15 @@ public class Liikuttaja {
         alusta.paivita();
     }
 
+    /**
+     * Tarkistaa luokan Tormays metodien avulla, törmääkö liikkunut Palikka
+     * johonkin
+     *
+     * @param palikka liikkutettava Palikka
+     * @param dx Palikan x-koordinaattin liikuttaessa tuleva muutos
+     * @param dy Palikan y-koordinaattin liikuttaessa tuleva muutos
+     * @return
+     */
     public boolean tormaakoLiikkunutPalikkaJohonkin(Palikka palikka, int dx, int dy) {
         for (Pala pala : palikka.getPalat()) {
             if (tormays.tormaakoRajoihin(pala.getX() + dx, pala.getY() + dy)) {

@@ -30,6 +30,7 @@ public class Nappaimistonkuuntelija implements KeyListener {
      *
      * @see tetris.logiikka.Palikka#liiku(int, int)
      * @see tetris.logiikka.Kaantaja#kaanna(Palikka)
+     * @see tetris.logiikka.Palikka#putoa()
      * @param e kuuntelijan tunnistama näppäimenpainallus
      */
     @Override

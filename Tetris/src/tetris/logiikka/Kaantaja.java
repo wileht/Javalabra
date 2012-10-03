@@ -32,7 +32,7 @@ public class Kaantaja {
      * @see kaannaPalikka(Palikka, int, int)
      * @see tetris.logiikka.Tormays#vaihdetaankoPalikka(Palikka)
      * @see tetris.gui.Piirtoalusta#paivita()
-     * @param palikka Käännettävä palikka
+     * @param palikka käännettävä palikka
      */
     public void kaanna(Palikka palikka) {
         int kiintoX = palikka.getKiintopiste().getX();
@@ -55,10 +55,10 @@ public class Kaantaja {
     /**
      * Kopioi annetun Palikan ja palauttaa kopion käännettynä
      *
-     * @param palikka Kopioitava Palikka
-     * @param dx Kiintopisteestä saatu korjaus Palikan Palojen
+     * @param palikka kopioitava Palikka
+     * @param dx kiintopisteestä saatu korjaus Palikan Palojen
      * x-koordinaatteihin
-     * @param dy Kiintopisteestä saatu korjaus Palikan Palojen
+     * @param dy kiintopisteestä saatu korjaus Palikan Palojen
      * y-koordinaatteihin
      * @return käännetty kopio annetusta Palikasta
      */
@@ -78,10 +78,10 @@ public class Kaantaja {
 
     /**
      * Kokeilee, törmääkö kääntynyt testipalikka johonkin
-     * 
+     *
      * @param palikka oikea, käännettävä palikka
      * @param kaantynyt kääntynyt testipalikka
-     * @return 
+     * @return
      */
     private boolean tormaakoTestiPalikkaJohonkin(Palikka palikka, Palikka kaantynyt) {
         for (Pala pala : kaantynyt.getPalat()) {
@@ -99,10 +99,10 @@ public class Kaantaja {
     /**
      * Kääntää annetun palikan ja korjaa sen paikan
      *
-     * @param palikka Käännettävä Palikka
-     * @param dx Kiintopisteestä saatu korjaus Palikan Palojen
+     * @param palikka käännettävä Palikka
+     * @param dx kiintopisteestä saatu korjaus Palikan Palojen
      * x-koordinaatteihin
-     * @param dy Kiintopisteestä saatu korjaus Palikan Palojen
+     * @param dy kiintopisteestä saatu korjaus Palikan Palojen
      * y-koordinaatteihin
      */
     public void kaannaPalikka(Palikka palikka, int dx, int dy) {

@@ -118,4 +118,9 @@ public class Tetris extends Timer implements ActionListener {
     public ArrayList<Pala> getPalat() {
         return palat;
     }
+
+    @Override
+    public int getDelay() {
+        return super.getDelay();
+    }
 }

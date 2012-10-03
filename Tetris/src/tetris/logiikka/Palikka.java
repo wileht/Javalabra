@@ -4,8 +4,9 @@ import java.util.ArrayList;
 
 /**
  * Palikka koostuu neljästä Palasta, joista yksi on samalla myös kääntämisessä
- * tarvittava kiintopiste. Palikkaa liikuttaessa tai kääntäessä sen jokainen
- * Pala liikkuu. Vain yksi Palikka on kerrallaan käsiteltävänä.
+ * tarvittava kiintopiste, jonka ympäri muut Palat pyörivät. Palikkaa
+ * liikuttaessa tai kääntäessä sen jokainen Pala liikkuu. Vain yksi Palikka on
+ * kerrallaan käsiteltävänä.
  *
  * @author Wille Lehtomäki
  */
@@ -41,10 +42,10 @@ public class Palikka {
     public void liiku(int dx, int dy) {
         liikuttaja.liikuta(this, dx, dy);
     }
-    
+
     /**
      * Pudottaa Palikan niin alas kuin mahdollista luokan Liikuttaja avulla
-     * 
+     *
      * @see tetris.logiikka.Liikuttaja#pudota(Palikka)
      */
     public void putoa() {

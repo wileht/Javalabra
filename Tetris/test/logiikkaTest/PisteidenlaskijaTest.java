@@ -44,4 +44,12 @@ public class PisteidenlaskijaTest {
         }
         assertEquals(laskija.getPisteet(), 1400, tarkkuus);
     }
+
+    @Test
+    public void pelinNopeutus() {
+        tetris.start();
+        laskija.actionPerformed(null);
+
+        assertEquals(tetris.getDelay(), 615);
+    }
 }

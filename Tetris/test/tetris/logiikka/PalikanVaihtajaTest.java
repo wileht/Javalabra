@@ -1,13 +1,10 @@
-package logiikkaTest;
+package tetris.logiikka;
 
-import javax.swing.SwingUtilities;
-import static org.junit.Assert.*;
 import org.junit.*;
+import static org.junit.Assert.*;
 import tetris.Tetris;
 import tetris.gui.Kayttoliittyma;
 import tetris.gui.Nappaimistonkuuntelija;
-import tetris.gui.Piirtoalusta;
-import tetris.logiikka.*;
 
 public class PalikanVaihtajaTest {
 

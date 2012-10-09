@@ -40,7 +40,7 @@ public class RivinTyhjentaja {
             if (montakoPalaaRivissa == 14) {
                 tyhjennaRivi(i);
                 laskija.lisaaRivinPisteet();
-                tiputaYlempiaRiveja(i);
+                liikuttaja.tiputaYlempiaRiveja(i);
             }
         }
     }
@@ -60,16 +60,6 @@ public class RivinTyhjentaja {
             }
         }
         tetris.poistaPalat(poistettavat);
-    }
-
-    /**
-     * Tiputtaa kaikkien ylempien rivien Paloja luokan Liikuttaja avullta
-     *
-     * @param i rivi, jota ylempänä sijaitsevia Paloja pudotetaan
-     * @see tetris.logiikka.Liikuttaja(tiputaYlempiaRiveja(int)
-     */
-    public void tiputaYlempiaRiveja(int i) {
-        liikuttaja.tiputaYlempiaRiveja(i);
     }
 
     public void setLaskija(Pisteidenlaskija laskija) {

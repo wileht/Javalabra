@@ -56,10 +56,6 @@ public class Palikka {
         return palat;
     }
 
-    public void setLiikuttaja(Liikuttaja liikuttaja) {
-        this.liikuttaja = liikuttaja;
-    }
-
     public Pala getKiintopiste() {
         return kiintopiste;
     }

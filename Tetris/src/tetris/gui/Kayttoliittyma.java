@@ -81,7 +81,7 @@ public class Kayttoliittyma implements Runnable {
 
     /**
      * Luo valikkoon painikkeen "Uusi peli"
-     * 
+     *
      * @return luotu painike
      */
     private JMenuItem luoUusiPeli() {
@@ -92,7 +92,7 @@ public class Kayttoliittyma implements Runnable {
 
     /**
      * Luo valikkoon painikkeen "Keskeytä/Jatka"
-     * 
+     *
      * @return luotu painike
      */
     private JMenuItem luoKeskeytaTaiJatka() {
@@ -103,7 +103,7 @@ public class Kayttoliittyma implements Runnable {
 
     /**
      * Luo valikkoon painikkeen "Lopeta peli"
-     * 
+     *
      * @return luotu painike
      */
     private JMenuItem luoLopetaPeli() {
@@ -114,7 +114,7 @@ public class Kayttoliittyma implements Runnable {
 
     /**
      * Luo valikkoon painikkeen "Apua"
-     * 
+     *
      * @return luotu painike
      */
     private JMenuItem luoApua() {
@@ -124,8 +124,8 @@ public class Kayttoliittyma implements Runnable {
     }
 
     /**
-     * Nollaa käynnissä olleen pelin tilanteen ja aloittaa uuden
-     * 
+     * Nollaa käynnissä olleen pelin tilanteen ja aloittaa uuden pelin
+     *
      * @see tetris.Tetris#tyhjenna()
      * @see tetris.logiikka.Pisteidenlaskija#tyhjenna()
      * @see tetris.logiikka.PalikanVaihtaja#vaihdaPalikka()
@@ -155,9 +155,9 @@ public class Kayttoliittyma implements Runnable {
     }
 
     /**
-     * Keskeyttää pelin tai jatkaa sen kulkua siitä, mihin se jäi ennen edellistä
-     * keskeytystä. Mikäli peli on jo päättynyt, ei tehdä kumpaakaan.
-     * 
+     * Keskeyttää pelin tai jatkaa sen kulkua siitä, mihin se jäi ennen
+     * edellistä keskeytystä. Mikäli peli on jo päättynyt, ei tehdä kumpaakaan.
+     *
      * @see keskeyta()
      * @see jatka()
      */
@@ -174,7 +174,7 @@ public class Kayttoliittyma implements Runnable {
 
     /**
      * Keskeyttää pelin
-     * 
+     *
      * @see tetris.gui.Nappaimistonkuuntelija#keskeyta()
      */
     public void keskeyta() {
@@ -184,8 +184,9 @@ public class Kayttoliittyma implements Runnable {
     }
 
     /**
-     * Käynnistää pelin uudelleen siitä kohtaa, mihin se jäi ennen keskeyttämistä
-     * 
+     * Käynnistää pelin uudelleen siitä kohtaa, mihin se jäi ennen
+     * keskeyttämistä
+     *
      * @see tetris.gui.Nappaimistonkuuntelija#jatka()
      */
     public void jatka() {

@@ -1,11 +1,11 @@
+package tetris;
 
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.junit.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import org.junit.*;
-import tetris.Tetris;
 import tetris.gui.Nappaimistonkuuntelija;
 import tetris.gui.Piirtoalusta;
 import tetris.logiikka.*;

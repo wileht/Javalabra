@@ -81,8 +81,4 @@ public class Nappaimistonkuuntelija implements KeyListener {
     public void setKaantaja(Kaantaja kaantaja) {
         this.kaantaja = kaantaja;
     }
-
-    public boolean isJatketaanko() {
-        return jatketaanko;
-    }
 }

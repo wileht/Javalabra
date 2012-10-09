@@ -55,7 +55,7 @@ public class Piirtoalusta extends JPanel {
         graphics.setColor(new Color(225, 225, 225));
 
         for (int i = 0; i <= 14; i++) {
-            graphics.drawLine(i * 25, 0, i * 25, 675);
+            graphics.drawLine(i * 25, 0, i * 25, 663);
         }
         for (int i = 0; i <= 27; i++) {
             graphics.drawLine(0, i * 25 - 12, 350, i * 25 - 12);

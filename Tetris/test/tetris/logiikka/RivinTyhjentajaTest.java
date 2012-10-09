@@ -1,11 +1,10 @@
-package logiikkaTest;
+package tetris.logiikka;
 
-import static org.junit.Assert.assertEquals;
 import org.junit.*;
+import static org.junit.Assert.assertEquals;
 import tetris.Tetris;
 import tetris.gui.Nappaimistonkuuntelija;
 import tetris.gui.Piirtoalusta;
-import tetris.logiikka.*;
 
 public class RivinTyhjentajaTest {
 

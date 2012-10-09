@@ -19,14 +19,14 @@ public class Valikonkuuntelija implements ActionListener {
     }
 
     /**
-     * Tarkistaa, mitä valikon painiketta on painettu, ja kutsuu Kayttoliittyman
-     * metodeita sen mukaan
-     * 
+     * Tarkistaa, mitä valikon painiketta on painettu, ja kutsuu luokan
+     * Kayttoliittyma metodeita sen mukaan
+     *
      * @see tetris.gui.Kayttoliittyma#uusiPeli()
      * @see tetris.gui.Kayttoliittyma#keskeytaTaiJatka()
      * @see tetris.gui.Kayttoliittyma#lopeta()
      * @see tetris.gui.Kayttoliittyma#naytaOhjeikkuna()
-     * @param e 
+     * @param e
      */
     @Override
     public void actionPerformed(ActionEvent e) {

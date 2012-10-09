@@ -1,9 +1,8 @@
-package logiikkaTest;
+package tetris.logiikka;
 
 import org.junit.*;
 import static org.junit.Assert.*;
 import tetris.Tetris;
-import tetris.logiikka.Pisteidenlaskija;
 
 public class PisteidenlaskijaTest {
 

@@ -24,13 +24,6 @@ public class Pisteidenlaskija extends Timer implements ActionListener {
     }
 
     /**
-     * Lisää rivin tuhoamisesta saadut pisteet
-     */
-    public void lisaaRivinPisteet() {
-        this.pisteet += 140;
-    }
-
-    /**
      * Käskee Tetristä nopeutumaan
      *
      * @see tetris.Tetris#nopeuta()
@@ -40,7 +33,21 @@ public class Pisteidenlaskija extends Timer implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         tetris.nopeuta();
     }
+    
+    /**
+     * Lisää rivin tuhoamisesta saadut pisteet
+     */
+    public void lisaaRivinPisteet() {
+        this.pisteet += 140;
+    }
 
+    /**
+     * Nollaa pistetilanteen
+     */
+    public void tyhjenna() {
+        this.pisteet = 0;
+    }
+    
     public int getPisteet() {
         return pisteet;
     }

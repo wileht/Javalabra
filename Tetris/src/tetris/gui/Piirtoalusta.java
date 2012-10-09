@@ -5,7 +5,6 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 import tetris.Tetris;
 import tetris.logiikka.Pala;
-import tetris.logiikka.Pisteidenlaskija;
 
 /**
  * Piirtää pelin ja päivittää pelitilanteen metodilla paivita()
@@ -16,7 +15,6 @@ import tetris.logiikka.Pisteidenlaskija;
 public class Piirtoalusta extends JPanel {
 
     private Tetris tetris;
-    private Pisteidenlaskija laskija;
 
     public Piirtoalusta(Tetris tetris) {
         this.tetris = tetris;
@@ -39,8 +37,6 @@ public class Piirtoalusta extends JPanel {
             graphics.fill3DRect(pala.getX() + 1, pala.getY() + 1,
                     tetris.getPalanKoko() - 2, tetris.getPalanKoko() - 2, true);
         }
-        graphics.setColor(Color.BLACK);
-        graphics.drawString("" + laskija.getPisteet(), 50, 50);
     }
 
     /**
@@ -64,9 +60,5 @@ public class Piirtoalusta extends JPanel {
         for (int i = 0; i <= 27; i++) {
             graphics.drawLine(0, i * 25 - 12, 350, i * 25 - 12);
         }
-    }
-
-    public void setLaskija(Pisteidenlaskija laskija) {
-        this.laskija = laskija;
     }
 }

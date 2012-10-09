@@ -1,9 +1,12 @@
 package logiikkaTest;
 
-import static org.junit.Assert.assertEquals;
+import javax.swing.SwingUtilities;
+import static org.junit.Assert.*;
 import org.junit.*;
 import tetris.Tetris;
+import tetris.gui.Kayttoliittyma;
 import tetris.gui.Nappaimistonkuuntelija;
+import tetris.gui.Piirtoalusta;
 import tetris.logiikka.*;
 
 public class PalikanVaihtajaTest {
@@ -32,6 +35,8 @@ public class PalikanVaihtajaTest {
         this.liikuttaja = new Liikuttaja(tetris);
         this.vaihtaja = new PalikanVaihtaja(tetris, kuuntelija, liikuttaja, new RivinTyhjentaja(tetris, liikuttaja));
         liikuttaja.setTormays(new Tormays(tetris, vaihtaja));
+        Kayttoliittyma liittyma = new Kayttoliittyma(tetris);
+        this.vaihtaja.setLiittyma(liittyma);       
     }
 
     @After

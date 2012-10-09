@@ -52,4 +52,12 @@ public class PisteidenlaskijaTest {
 
         assertEquals(tetris.getDelay(), 615);
     }
+    
+    @Test
+    public void pisteidenNollaus() {
+        laskija.lisaaRivinPisteet();
+        laskija.tyhjenna();
+        
+        assertEquals(laskija.getPisteet(), 0, tarkkuus);
+    }
 }

@@ -4,12 +4,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.Timer;
-import tetris.logiikka.Pala;
-import tetris.logiikka.Palikka;
+import tetris.gui.Kayttoliittyma;
+import tetris.logiikka.*;
 
 /**
  * Pitää kirjaa kaikista Paloista ja pudottaa automaattisesti kulloinkin
- * käsiteltävää Palikkaa määrätyn aikavälein välein
+ * käsiteltävää Palikkaa määrätyn aikavälein välein.
  *
  * @author Wille Lehtomäki
  */
@@ -18,12 +18,13 @@ public class Tetris extends Timer implements ActionListener {
     private int palanKoko;
     private ArrayList<Pala> palat;
     private Palikka palikka;
+    private PalikanVaihtaja vaihtaja;
 
     public Tetris() {
         super(650, null);
 
         addActionListener(this);
-        setInitialDelay(1000);
+        setInitialDelay(650);
 
         this.palanKoko = 25;
         this.palat = new ArrayList<>();
@@ -94,12 +95,39 @@ public class Tetris extends Timer implements ActionListener {
     }
 
     /**
-     * Lopettaa Palikoiden automaattisen tiputuksen
+     * Poistaa kaikki Palat Tetriksestä
      */
-    public void lopeta() {
-        super.stop();
+    public void tyhjenna() {
+        palat.clear();
     }
 
+    /**
+     * Luo suurimman osan sovelluslogiikan luokista
+     * 
+     * @param liittyma Mainissa luotu käyttöliittymä
+     */
+    public void luoPeli(Kayttoliittyma liittyma) {
+        Liikuttaja liikuttaja = new Liikuttaja(this);
+        liikuttaja.setAlusta(liittyma.getAlusta());
+
+        RivinTyhjentaja tyhjentaja = new RivinTyhjentaja(this, liikuttaja);
+        liikuttaja.setTyhjentaja(tyhjentaja);
+        tyhjentaja.setLaskija(liittyma.getLaskija());
+
+        this.vaihtaja = new PalikanVaihtaja(this, liittyma.getKuuntelija(), liikuttaja, tyhjentaja);
+        vaihtaja.setLiittyma(liittyma);
+
+        Tormays tormays = new Tormays(this, vaihtaja);
+        liikuttaja.setTormays(tormays);
+
+        Kaantaja kaantaja = new Kaantaja(liittyma.getAlusta(), tormays);
+        liittyma.getKuuntelija().setKaantaja(kaantaja);
+    }
+
+    public PalikanVaihtaja getVaihtaja() {
+        return vaihtaja;
+    }
+    
     public int getPalanKoko() {
         return palanKoko;
     }

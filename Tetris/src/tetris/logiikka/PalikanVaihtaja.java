@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Random;
 import tetris.Tetris;
+import tetris.gui.Kayttoliittyma;
 import tetris.gui.Nappaimistonkuuntelija;
 
 /**
@@ -18,6 +19,7 @@ public class PalikanVaihtaja {
     private Nappaimistonkuuntelija kuuntelija;
     private Liikuttaja liikuttaja;
     private RivinTyhjentaja tyhjentaja;
+    private Kayttoliittyma liittyma;
     private Random random = new Random();
 
     public PalikanVaihtaja(Tetris tetris, Nappaimistonkuuntelija kuuntelija, Liikuttaja liikuttaja,
@@ -35,7 +37,7 @@ public class PalikanVaihtaja {
      *
      * @see tetris.logiikka.Liikuttaja#tormaakoLiikkunutPalikkaJohonkin(Palikka,
      * int, int)
-     * @see lopeta()
+     * @see tetris.gui.Kayttoliittyma#lopeta()
      * @see tetris.Tetris#setPalikka(Palikka)
      * @see tetris.gui.Nappaimistonkuuntelija#setPalikka(Palikka)
      * @see tetris.logiikka.RivinTyhjentaja#tarkistaRivit()
@@ -43,7 +45,7 @@ public class PalikanVaihtaja {
     public void vaihdaPalikka() {
         Palikka uusi = luoUusiPalikka();
         if (liikuttaja.tormaakoLiikkunutPalikkaJohonkin(uusi, 0, 0)) {
-            lopeta();
+            liittyma.lopeta();
             return;
         }
         tetris.setPalikka(uusi);
@@ -208,22 +210,14 @@ public class PalikanVaihtaja {
         while (true) {
             vari = new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256));
             if (Math.abs(vari.getRed() - 238) + Math.abs(vari.getGreen() - 238)
-                    + Math.abs(vari.getBlue() - 238) >= 60) {
+                    + Math.abs(vari.getBlue() - 238) >= 300) {
                 break;
             }
         }
         return vari;
     }
 
-    /**
-     * Lopettaa pelin pysäyttämällä Palikoiden automaattisen tiputuksen ja
-     * näppäinohjauksen
-     *
-     * @see tetris.Tetris#lopeta()
-     * @see tetris.logiikka.Nappaimistonkuuntelija#lopeta()
-     */
-    private void lopeta() {
-        tetris.lopeta();
-        kuuntelija.lopeta();
+    public void setLiittyma(Kayttoliittyma liittyma) {
+        this.liittyma = liittyma;
     }
 }

@@ -35,7 +35,7 @@ public class Nappaimistonkuuntelija implements KeyListener {
      */
     @Override
     public void keyPressed(KeyEvent e) {
-        if (!jatketaanko) {
+        if (!jatketaanko || palikka == null) {
             return;
         }
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
@@ -55,8 +55,15 @@ public class Nappaimistonkuuntelija implements KeyListener {
     /**
      * Lopettaa Palikoiden näppäinohjauksen
      */
-    public void lopeta() {
+    public void keskeyta() {
         this.jatketaanko = false;
+    }
+    
+    /**
+     * Ottaa Palikoiden näppäinohjauksen uudelleen käyttöön
+     */
+    public void jatka() {
+        this.jatketaanko = true;
     }
 
     public void setPalikka(Palikka palikka) {
@@ -73,5 +80,9 @@ public class Nappaimistonkuuntelija implements KeyListener {
 
     public void setKaantaja(Kaantaja kaantaja) {
         this.kaantaja = kaantaja;
+    }
+
+    public boolean isJatketaanko() {
+        return jatketaanko;
     }
 }

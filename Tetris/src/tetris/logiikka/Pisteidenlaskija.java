@@ -33,7 +33,7 @@ public class Pisteidenlaskija extends Timer implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         tetris.nopeuta();
     }
-    
+
     /**
      * Lisää rivin tuhoamisesta saadut pisteet
      */
@@ -47,7 +47,7 @@ public class Pisteidenlaskija extends Timer implements ActionListener {
     public void tyhjenna() {
         this.pisteet = 0;
     }
-    
+
     public int getPisteet() {
         return pisteet;
     }

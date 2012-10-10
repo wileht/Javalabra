@@ -1,7 +1,7 @@
 package tetris.logiikka;
 
-import org.junit.*;
 import static org.junit.Assert.assertEquals;
+import org.junit.*;
 import tetris.Tetris;
 import tetris.gui.Nappaimistonkuuntelija;
 import tetris.gui.Piirtoalusta;
@@ -56,7 +56,7 @@ public class RivinTyhjentajaTest {
     }
 
     @Test
-    public void rivienTarkistusToimii() {
+    public void rivienTarkistus() {
         tyhjentaja.tarkistaRivit();
         assertEquals(tetris.getPalat().size(), 0, tarkkuus);
     }
@@ -69,11 +69,11 @@ public class RivinTyhjentajaTest {
         assertEquals(tiputettava.getX(), 175, tarkkuus);
         assertEquals(tiputettava.getY(), 13, tarkkuus);
     }
-    
+
     @Test
     public void rivinPoistuessaLisataanPisteet() {
         tyhjentaja.tarkistaRivit();
-        
-        assertEquals(laskija.getPisteet(), 140 , tarkkuus);
+
+        assertEquals(laskija.getPisteet(), 140, tarkkuus);
     }
 }

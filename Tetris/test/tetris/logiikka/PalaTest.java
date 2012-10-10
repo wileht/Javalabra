@@ -1,7 +1,7 @@
 package tetris.logiikka;
 
-import org.junit.*;
 import static org.junit.Assert.assertEquals;
+import org.junit.*;
 
 public class PalaTest {
 

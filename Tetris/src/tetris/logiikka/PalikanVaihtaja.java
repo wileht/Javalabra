@@ -56,7 +56,7 @@ public class PalikanVaihtaja {
     /**
      * Arpoo luotavan Palikan tyypin ja luo sen
      *
-     * @return palautettava Palikka
+     * @return luotu Palikka
      */
     public Palikka luoUusiPalikka() {
         Palikka palautettava = null;

@@ -70,8 +70,7 @@ public class Tetris extends Timer implements ActionListener {
             this.palat.add(pala);
         }
     }
-    
-    
+
     /**
      * Nopeuttaa peliä lyhentämällä Palikoiden automaattisen tiputuksen viivettä
      */
@@ -103,7 +102,7 @@ public class Tetris extends Timer implements ActionListener {
 
     /**
      * Luo suurimman osan sovelluslogiikan luokista
-     * 
+     *
      * @param liittyma Mainissa luotu käyttöliittymä
      */
     public void luoPeli(Kayttoliittyma liittyma) {
@@ -127,7 +126,7 @@ public class Tetris extends Timer implements ActionListener {
     public PalikanVaihtaja getVaihtaja() {
         return vaihtaja;
     }
-    
+
     public int getPalanKoko() {
         return palanKoko;
     }

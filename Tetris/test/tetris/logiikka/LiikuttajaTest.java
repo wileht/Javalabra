@@ -1,9 +1,10 @@
 package tetris.logiikka;
 
 import java.util.ArrayList;
-import org.junit.*;
 import static org.junit.Assert.assertEquals;
+import org.junit.*;
 import tetris.Tetris;
+import tetris.gui.Kayttoliittyma;
 import tetris.gui.Nappaimistonkuuntelija;
 import tetris.gui.Piirtoalusta;
 
@@ -35,6 +36,7 @@ public class LiikuttajaTest {
         liikuttaja.setTormays(new Tormays(tetris, vaihtaja));
         this.palikka = vaihtaja.luoNelioPalikka(null);
         tetris.setPalikka(palikka);
+        vaihtaja.setLiittyma(new Kayttoliittyma(tetris));
     }
 
     @After
@@ -95,5 +97,11 @@ public class LiikuttajaTest {
 
         palikka.liiku(0, 587);
         assertEquals(tetris.getPalat().size(), 9, tarkkuus);
+    }
+
+    @Test
+    public void palikanPudotus() {
+        palikka.putoa();
+        assertEquals(palikka.getPalat().get(0).getY(), 638, tarkkuus);
     }
 }

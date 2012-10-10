@@ -157,7 +157,7 @@ public class Tormays {
 
     /**
      * Tarkistaa, pitääkö Palikka vaihtaa, eli osuuko se lattiaan tai onko sen
-     * alla ulkopuolista Palaa
+     * alla ulkopuolista Palaa. Myönteisessä tapauksessa Palikka vaihdetaan.
      *
      * @param palikka tarkasteltava Palikka
      * @see osuukoPalikkaLattiaan(Palikka)

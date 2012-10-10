@@ -1,7 +1,7 @@
 package tetris.logiikka;
 
-import org.junit.*;
 import static org.junit.Assert.*;
+import org.junit.*;
 import tetris.Tetris;
 import tetris.gui.Nappaimistonkuuntelija;
 import tetris.gui.Piirtoalusta;

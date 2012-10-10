@@ -149,8 +149,8 @@ public class Kayttoliittyma implements Runnable {
      */
     public void lopeta() {
         peliPaattynyt = true;
-        alusta.paivita();
         keskeyta();
+        alusta.paivita();
         JOptionPane.showMessageDialog(frame, "Peli päättyi!\n\nPisteesi: " + laskija.getPisteet());
     }
 
@@ -173,7 +173,8 @@ public class Kayttoliittyma implements Runnable {
     }
 
     /**
-     * Keskeyttää pelin
+     * Keskeyttää pelin pysäyttämällä Palikoiden näppäinohjauksen, automaattisen
+     * pudotuksen ja pisteidenlaskun
      *
      * @see tetris.gui.Nappaimistonkuuntelija#keskeyta()
      */
@@ -185,7 +186,8 @@ public class Kayttoliittyma implements Runnable {
 
     /**
      * Käynnistää pelin uudelleen siitä kohtaa, mihin se jäi ennen
-     * keskeyttämistä
+     * keskeyttämistä, eli ottaa metodissa keskeyta() keskeytetyt
+     * toiminnallisuudet uudelleen käyttöön
      *
      * @see tetris.gui.Nappaimistonkuuntelija#jatka()
      */

@@ -1,7 +1,7 @@
 package tetris.logiikka;
 
+import static org.junit.Assert.assertEquals;
 import org.junit.*;
-import static org.junit.Assert.*;
 import tetris.Tetris;
 
 public class PisteidenlaskijaTest {
@@ -51,12 +51,12 @@ public class PisteidenlaskijaTest {
 
         assertEquals(tetris.getDelay(), 615);
     }
-    
+
     @Test
     public void pisteidenNollaus() {
         laskija.lisaaRivinPisteet();
         laskija.tyhjenna();
-        
+
         assertEquals(laskija.getPisteet(), 0, tarkkuus);
     }
 }

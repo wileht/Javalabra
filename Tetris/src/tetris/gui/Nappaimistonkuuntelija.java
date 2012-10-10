@@ -53,12 +53,12 @@ public class Nappaimistonkuuntelija implements KeyListener {
     }
 
     /**
-     * Lopettaa Palikoiden näppäinohjauksen
+     * Keskeyttää Palikoiden näppäinohjauksen
      */
     public void keskeyta() {
         this.jatketaanko = false;
     }
-    
+
     /**
      * Ottaa Palikoiden näppäinohjauksen uudelleen käyttöön
      */

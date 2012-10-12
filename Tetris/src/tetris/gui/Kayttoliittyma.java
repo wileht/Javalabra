@@ -203,7 +203,9 @@ public class Kayttoliittyma implements Runnable {
     public void naytaOhjeikkuna() {
         keskeyta();
         JOptionPane.showMessageDialog(frame, "Peli keskeytetty.\n\nOhjaa palikkaa nuolinäppäimillä.\n"
-                + "Nuoli ylöspäin kääntää palikan,\nenter ja space pudottavat palikan suoraan.");
+                + "Nuoli ylöspäin kääntää palikan,\nenter ja space pudottavat palikan suoraan."
+                + "\n\nPeli vaikeutuu ajan myötä, joten ole nopea."
+                + "\n\nJatka peliä valikon kautta.");
     }
 
     public Piirtoalusta getAlusta() {

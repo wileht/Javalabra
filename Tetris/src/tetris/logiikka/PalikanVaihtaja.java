@@ -33,7 +33,9 @@ public class PalikanVaihtaja {
     /**
      * Luo uuden Palikan ja antaa sen Tetrikselle ja Nappaimistonkuuntelijalle,
      * sekä tarkistaa pelialueen täysien rivien varalta. Mikäli Palikka
-     * yritetään luoda ulkopuolisen Palan päälle, peli loppuu.
+     * yritetään luoda ulkopuolisen Palan päälle tai yläpuolelle, peli loppuu.
+     * Lopussa tarkistetaan, onko uuden Palikan alapuolella ulkopuolista Palaa
+     * Liikuttaja-luokan avulla.
      *
      * @see tetris.logiikka.Liikuttaja#tormaakoLiikkunutPalikkaJohonkin(Palikka,
      * int, int)
@@ -41,6 +43,7 @@ public class PalikanVaihtaja {
      * @see tetris.Tetris#setPalikka(Palikka)
      * @see tetris.gui.Nappaimistonkuuntelija#setPalikka(Palikka)
      * @see tetris.logiikka.RivinTyhjentaja#tarkistaRivit()
+     * @see tetris.logiikka.Liikuttaja#liikuta(Palikka, int, int)
      */
     public void vaihdaPalikka() {
         Palikka uusi = luoUusiPalikka();
@@ -51,6 +54,7 @@ public class PalikanVaihtaja {
         tetris.setPalikka(uusi);
         kuuntelija.setPalikka(uusi);
         tyhjentaja.tarkistaRivit();
+        liikuttaja.liikuta(uusi, 0, 0);
     }
 
     /**

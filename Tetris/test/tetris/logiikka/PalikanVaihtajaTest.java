@@ -5,6 +5,7 @@ import org.junit.*;
 import tetris.Tetris;
 import tetris.gui.Kayttoliittyma;
 import tetris.gui.Nappaimistonkuuntelija;
+import tetris.gui.Piirtoalusta;
 
 public class PalikanVaihtajaTest {
 
@@ -32,6 +33,7 @@ public class PalikanVaihtajaTest {
         this.liikuttaja = new Liikuttaja(tetris);
         this.vaihtaja = new PalikanVaihtaja(tetris, kuuntelija, liikuttaja, new RivinTyhjentaja(tetris, liikuttaja));
         liikuttaja.setTormays(new Tormays(tetris, vaihtaja));
+        liikuttaja.setAlusta(new Piirtoalusta(tetris));
         Kayttoliittyma liittyma = new Kayttoliittyma(tetris);
         this.vaihtaja.setLiittyma(liittyma);
     }

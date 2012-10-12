@@ -1,4 +1,0 @@
-Javalabra
-=========
-Jahuu
-Jipii

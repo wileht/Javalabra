@@ -1,0 +1,3 @@
+Tetris - Käyttöohje
+
+Tetriksen voi avata joko suoraan Tetris.jar-tiedostosta tai NetBeansin kautta. Käyttöliittymän auettua peli käynnistyy "Peli"-pudotusvalikon "Uusi peli"-painikkeesta. Tarkemmat ohjeet pelaamiseen löytyvät "Apua"-pudotusvalikon "Ohje"-painikkeen kautta.

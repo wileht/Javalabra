@@ -21,10 +21,6 @@ public class Nappaimistonkuuntelija implements KeyListener {
         this.jatketaanko = true;
     }
 
-    @Override
-    public void keyTyped(KeyEvent e) {
-    }
-
     /**
      * Liikuttaa palikkaa haluttuun suuntaan, kääntää tai pudottaa sen
      *
@@ -72,6 +68,10 @@ public class Nappaimistonkuuntelija implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
     }
 
     public Palikka getPalikka() {

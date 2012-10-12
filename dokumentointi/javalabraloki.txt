@@ -1,0 +1,132 @@
+Keskiviikko 5.9.
+
+klo 10-12:30 Koodauksen aloitus:
+- ohjelmarunko pääpiirteittäin valmis
+- graafisessa käyttöliittymä vain olennainen, eli pelkkä pelialusta
+- Tetriksessä vain yksi neliön muotoinen pala, joka putoaa automaattisesti ja on myös näppäimistön ohjailtavissa. Pala törmää seiniin ja lattiaan, mutta ei muihin paloihin.
+- pudonnutta Palaa voi ohjailla myös pitkin lattiaa
+
+Maanantai 10.9.
+
+klo 9:30-11
+- Tetriksessä useampi pala
+- ohjelmarunkoon yhteysluokka PalikanVaihtaja, joka huolehtii, että ohjattavana on vain yksi palikka kerrallaan
+- ohjaus siirtyy palikalta uudelle, kun edellinen palikka osuu pelialueen lattiaan
+- palikat eivät vieläkään törmää toisiinsa, vaan kasautuvat pelialueen lattialle
+
+klo 17-18
+- ensimmäiset, alustavat testit suurimpaan osaan luokista
+
+Tiistai 11.9.
+
+klo 12-14
+- palikoiden liikuttaminen eristetty Liikuttaja-luokkaan
+- palat törmäävät toisiinsa
+- liikutettava palikka vaihtuu (siis uusi luodaan), kun palikka laitetaan toisen palikan päälle
+- siis toteutettu laatikonpinoamispeli
+
+klo 17-18
+- testit myös uuteen liikuttamissysteemiin, vanhojen muokkausta uuteen systeemiin sopiviksi
+- koodin siistimistä, käyttämättömien metodien poistamista
+
+Keskiviikko 12.9.
+
+klo 10-12.30
+- luokka RivinTyhjentaja luotu, myös RivinTyhjentajaTest
+- täydet rivit katoavat, kun laskeutuva palikka täyttää rivin
+- kadonneen rivin yläpuoliset palikat putoavat
+- rivit tarkistetaan täysien varalta myös yläpuolisten rivien putoamisen jälkeen
+- valmiina siis "maailman helpoin Tetris", mukana kaikki muu Tetriksen toiminnallisuus paitsi kääntyvät neljän palan palikat, siis varsinaiset Palikat
+
+Tiitai 18.9.
+
+klo 18.15-20.45
+- alustava luokkakaavio luotu
+- luokkakaaviossa ei luonnollisesti vielä mukana luokkaa Kääntäjä
+- pelialueen rajoista ja muihin paloihin törmäämisestä huolehtiva luokka Tormays luotu
+- luokkaa Liikuttaja siistitty, metodeja siirretty luokalle Tormays
+- luokalla Tormays ei vielä omia testejä, joskin ne tulevat testatuiksi luokan LiikuttajaTest kautta
+
+Keskiviikko 19.9.
+
+klo 19-20
+- TormaysTest luotu
+- pienten ajatusvirheiden korjailua, yleistä refaktorointia
+
+Lauantai 22.9.
+
+klo 11.30-14.30
+- Tetriksessä nyt yksittäisten Palojen sijasta kokonaisia, "oikeita" Tetris-palikoita
+- kaikki vanha toiminnallisuus säilytetty/siirretty tukemaan useamman Palan palikoita
+- Palikoita voi myös kääntää Kääntäjä-luokan avulla
+- Palikat eivät voi liikkua pelialueen ulkopuolelle, mutta ne voidaan kääntää sinne
+- T-muotoisilla Palikoilla ilmenee silloin tällöin omituinen bugi: niiden kiintopiste ei ole aina sama, vaikka pitäisi olla (noin joka toisella/kolmannella)
+
+Sunnuntai 23.9.
+
+klo 12-14
+- myös Kääntäjä-luokka tunnistaa törmäykset, eli Palikat eivät voi kääntyä pelialueen ulkopuolelle tai toisten Palojen päälle
+- yllämainittu T-muotoisten (ja muidenkin) Palikoiden bugi korjattu tekemällä Palikan kiintopisteestä konkreettinen Pala erillisen entiteetin sijaan
+
+Maanantai 24.9.
+
+klo 9.30-11
+- Testien muokkaamista tukemaan useamman Palan Palikoita
+
+klo 17.30-19
+- lisää Testien muokkaamista, nyt myös KaantajaTest luotu
+
+Tiistai 25.9.
+
+klo 9.30-11
+- dokumentointia: luokkakaavio päivitetty
+- testien korjailua
+
+Keskiviikko 26.9.
+
+klo 9.30-11
+- Javadocit kaikille luokille
+
+klo 17-19
+- Palat saivat värit
+- Enter tiputtaa Palikan suoraan
+- Testit edellisille
+- sekvenssikaaviot
+
+Perjantai 28.9.
+
+klo 11-13
+- luokka Pisteidenlaskija luotu laskemaan pisteitä ja nopeuttamaan peliä
+- pelin nopeutuminen sidottu aikaan, jota Timer-luokan perivä Pisteidenlaskija laskee
+- luokka Tetris nopeutuu lineaarisesti
+- peli "päättyy", kun uusi palikka luodaan edellisen päälle, oikeastaan peli vain pysähtyy
+- Pisteidenlaskija laskee pisteitä hyvin yksinkertaisesti eli vakiomäärä pisteitä jokaisesta täyttyneestä rivistä
+
+Tiistai 2.10.
+
+klo 10-11
+- myös uusimmilla ominaisuuksilla testit
+
+Keskiviikko 3.10.
+
+klo 10-11.30
+- kaavioiden ja javadocin päivitystä, refaktorointia
+
+Lauantai 6.10.
+
+klo 11.30-13.30
+- graafiseen käyttöliittymään luotu toimiva valikkorivi
+- valikkorivin toiminnat ovat uuden pelin aloittaminen, pelin keskeyttäminen ja jatkaminen, pelin lopettaminen ja ohjeen pyytäminen
+- kaikki yllämainitut toiminnallisuudet toteutettu
+- pelin lopussa ilmoitetaan pistemäärä, peli loppuu tällä tavalla valikkorivin lisäksi myös "luonnollisesti"
+- mainia siivottu, tällä hetkellä Tetris luo suurimman osan luokista
+
+Maanantai 8.10.
+
+klo 10-11
+- refaktorointia, kaavioiden päivitystä
+
+Perjantai 12.10.
+
+klo 11-12
+- viimeistelyä

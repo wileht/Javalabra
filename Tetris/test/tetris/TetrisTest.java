@@ -62,7 +62,7 @@ public class TetrisTest {
         assertEquals(tetris.getPalikka().getPalat().get(0).getY(), Yalussa + 25, tarkkuus);
     }
 
-    // Huom! setUpissa kutsutaan metodia vaihdaPalikka(), joka luo Tetrikseen
+    // setUpissa kutsutaan metodia vaihdaPalikka(), joka luo Tetrikseen
     // yhden neljän Palan Palikan
     @Test
     public void palanLisays() {
